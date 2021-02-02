@@ -1,0 +1,49 @@
+<div class="container">
+  <mat-form-field>
+    <mat-label>Select graph type</mat-label>
+    <mat-select [ngModel]="graphSelected" (ngModelChange)="onSelectGraphType($event)">
+      <mat-option *ngFor="let graph of graphTypes" [value]="graph.value">
+        {{graph.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div id="json-editor">
+    <div id="config-editor">
+      <json-editor [options]="editorOptions" [data]="editorConfigurationJson" #configEditor></json-editor>
+      <div class="changes-button">
+        <button mat-stroked-button color="primary" (click)="confirmConfChanges(configEditor)">Confirm config changes</button>
+      </div>
+    </div>
+    <div id="data-editor">
+      <json-editor [options]="editorOptions" [data]="graphsData[graphSelected]" #dataEditor></json-editor>
+      <div class="changes-button">
+        <button mat-stroked-button color="primary" (click)="confirmDataChanges(dataEditor)">Confirm data changes</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="graph-container">
+    <div [ngSwitch]="graphSelected" style="height: 100%; width: 100%">
+      <cm-histogram-chart *ngSwitchCase="'histogram'" [graphConfigs]="graphsConfigurations[graphSelected]"
+                           [graphData]="graphsData[graphSelected]"></cm-histogram-chart>
+      <cm-pie-chart *ngSwitchCase="'pie'" [graphConfigs]="graphsConfigurations[graphSelected]"
+                     [graphData]="graphsData[graphSelected]"></cm-pie-chart>
+      <cm-pie-chart *ngSwitchCase="'donut'" [graphConfigs]="graphsConfigurations[graphSelected]"
+                     [graphData]="graphsData[graphSelected]"></cm-pie-chart>
+      <cm-line-chart *ngSwitchCase="'line'" [graphConfigs]="graphsConfigurations[graphSelected]"
+                      [graphData]="graphsData[graphSelected]"></cm-line-chart>
+      <cm-range-slider-chart *ngSwitchCase="'range-slider'" [graphConfigs]="graphsConfigurations[graphSelected]"
+                              [graphData]="graphsData[graphSelected]"></cm-range-slider-chart>
+      <cm-tree-chart *ngSwitchCase="'tree'" [graphConfigs]="graphsConfigurations[graphSelected]"
+                      [graphData]="graphsData[graphSelected]"></cm-tree-chart>
+      <cm-flow-chart *ngSwitchCase="'flow-chart'" [graphConfigs]="graphsConfigurations[graphSelected]"
+                      [nodes]="graphsData[graphSelected].nodes"
+                      [edges]="graphsData[graphSelected].edges"
+                      [clusters]="graphsData[graphSelected].clusters"></cm-flow-chart>
+      <cm-bubble-chart *ngSwitchCase="'bubble-chart'" [graphConfigs]="graphsConfigurations[graphSelected]"
+                        [graphData]="graphsData[graphSelected]"></cm-bubble-chart>
+    </div>
+  </div>
+</div>
+

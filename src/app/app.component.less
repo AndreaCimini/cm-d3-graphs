@@ -1,0 +1,39 @@
+.container {
+  @body-padding: 1.25rem;
+  padding: @body-padding;
+
+  #json-editor {
+    @margin: 0.625rem;
+
+    margin-bottom: @margin;
+
+    #config-editor, #data-editor {
+      vertical-align: middle;
+      display: inline-block;
+      width: calc(50% - @margin);
+
+      ::ng-deep .jsoneditor-outer {
+        height: 18.75rem;
+      }
+    }
+
+    #config-editor {
+      margin-right: @margin;
+    }
+
+    #data-editor {
+      margin-left: @margin;
+    }
+
+    .changes-button {
+      margin-top: @margin;
+      text-align: right;
+    }
+  }
+
+  .graph-container {
+    border: 0.0625rem solid #ddd;
+    border-radius: 0.25rem;
+    height: calc(100vh - 4.2rem - 2 * @body-padding);
+  }
+}

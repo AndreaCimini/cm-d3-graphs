@@ -1,0 +1,36 @@
+{
+  "name": "@acimini/cm-d3-graphs",
+  "version": "0.0.1",
+  "author": "Andrea Cimini",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndreaCimini/cm-d3-graphs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AndreaCimini/cm-d3-graphs/issues"
+  },
+  "keywords": [
+    "angular",
+    "javascript",
+    "typescript",
+    "d3",
+    "dagre",
+    "graphs",
+    "histogram",
+    "pie",
+    "donut",
+    "tree chart",
+    "flow chart",
+    "bubble chart",
+    "range slider chart",
+    "line chart"
+  ],
+  "license": "Apache",
+  "peerDependencies": {
+    "@angular/common": "^9.1.13",
+    "@angular/core": "^9.1.13",
+    "d3": "^6.3.1",
+    "dagre": "^0.8.5"
+  },
+  "devDependencies": {}
+}
