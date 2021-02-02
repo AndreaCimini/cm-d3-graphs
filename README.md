@@ -74,7 +74,7 @@ This is based on:
 Import in your app
 
 ```javascript
-import { CmD3GraphsModule } from 'cm-d3-graphs';
+import { CmD3GraphsModule } from '@acimini/cm-d3-graphs';
 
 @NgModule({
   imports: [ CmD3GraphsModule ],
@@ -87,7 +87,7 @@ import { CmD3GraphsModule } from 'cm-d3-graphs';
 #### First define the configuration for the graph
 
 ```javascript
-import {GraphTypeConfigurationInterface} from 'cm-d3-graphs';
+import {GraphTypeConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const graphConf: GraphTypeConfigurationInterface = {
   ...
@@ -98,7 +98,7 @@ Each graph has its own configuration. See the sections below to check what is th
 #### Define the data for the graph
 
 ```javascript
-import {GraphTypeDataInterface} from 'cm-d3-graphs';
+import {GraphTypeDataInterface} from '@acimini/cm-d3-graphs';
 
 const graphData: GraphTypeDataInterface = [
   ...
@@ -129,7 +129,7 @@ Each graph section is divided in four parts:
 To configure correctly the graph, it is possible to use the **HistogramGraphConfigurationInterface**
 
 ```javascript
-import {HistogramGraphConfigurationInterface} from 'cm-d3-graphs';
+import {HistogramGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const histogramConf: HistogramGraphConfigurationInterface = {
   ...
@@ -352,7 +352,7 @@ If not provided, default value will be used.
 The data for the histogram have a specific format, defined by the **HistogramGraphDataInterface**
 
 ```javascript
-import {HistogramGraphDataInterface} from 'cm-d3-graphs';
+import {HistogramGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const histogramData: HistogramGraphDataInterface[] = [
     {...},
@@ -397,7 +397,7 @@ Below an example
   <summary>Configuration</summary>
 
 ```javascript
-import {HistogramGraphConfigurationInterface} from 'cm-d3-graphs';
+import {HistogramGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const histogramConfs: HistogramGraphConfigurationInterface = {
   id: 'histogram_chart',
@@ -426,7 +426,7 @@ const histogramConfs: HistogramGraphConfigurationInterface = {
   <summary>Data</summary>
 
 ```javascript
-import {HistogramGraphDataInterface} from 'cm-d3-graphs';
+import {HistogramGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const histogramData: HistogramGraphDataInterface[] = [
   {values: [-12, 34, -56], label: 'Label1'},
@@ -464,7 +464,7 @@ const histogramData: HistogramGraphDataInterface[] = [
 To configure correctly the graph, it is possible to use the **PieGraphConfigurationInterface**
 
 ```javascript
-import {PieGraphConfigurationInterface} from 'cm-d3-graphs';
+import {PieGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const pieConf: PieGraphConfigurationInterface = {
   ...
@@ -609,7 +609,7 @@ If not provided, default value will be used.
 The data for the pie have a specific format, defined by the **PieGraphDataInterface**
 
 ```javascript
-import {PieGraphDataInterface} from 'cm-d3-graphs';
+import {PieGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const pieData: PieGraphDataInterface[] = [
     {...},
@@ -668,7 +668,7 @@ Below an example
   <summary>Configuration</summary>
 
 ```javascript
-import {PieGraphConfigurationInterface} from 'cm-d3-graphs';
+import {PieGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const pieConfs: PieGraphConfigurationInterface = {
   id: 'pie_chart',
@@ -687,7 +687,7 @@ const pieConfs: PieGraphConfigurationInterface = {
   <summary>Data</summary>
 
 ```javascript
-import {PieGraphDataInterface} from 'cm-d3-graphs';
+import {PieGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const pieData: PieGraphDataInterface[] = [
   {label: 'USA', value: 130},
@@ -718,7 +718,7 @@ const pieData: PieGraphDataInterface[] = [
 To configure correctly the graph, it is possible to use the **PieGraphConfigurationInterface**
 
 ```javascript
-import {PieGraphConfigurationInterface} from 'cm-d3-graphs';
+import {PieGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const donutConf: PieGraphConfigurationInterface = {
   ...
@@ -863,7 +863,7 @@ If not provided, default value will be used.
 The data for the donut have a specific format, defined by the **PieGraphDataInterface**
 
 ```javascript
-import {PieGraphDataInterface} from 'cm-d3-graphs';
+import {PieGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const donutData: PieGraphDataInterface[] = [
     {...},
@@ -922,7 +922,7 @@ Below an example
   <summary>Configuration</summary>
 
 ```javascript
-import {PieGraphConfigurationInterface} from 'cm-d3-graphs';
+import {PieGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const donutConfs: PieGraphConfigurationInterface = {
   id: 'donut_chart',
@@ -937,7 +937,7 @@ const donutConfs: PieGraphConfigurationInterface = {
   <summary>Data</summary>
 
 ```javascript
-import {PieGraphDataInterface} from 'cm-d3-graphs';
+import {PieGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const donutData: PieGraphDataInterface[] = [
   {label: 'USA', value: 60},
@@ -968,7 +968,7 @@ const donutData: PieGraphDataInterface[] = [
 To configure correctly the graph, it is possible to use the **LineGraphConfigurationInterface**
 
 ```javascript
-import {LineGraphConfigurationInterface} from 'cm-d3-graphs';
+import {LineGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const lineConf: LineGraphConfigurationInterface = {
   ...
@@ -1190,7 +1190,7 @@ If not provided, default value will be used.
 The data for the line have a specific format, defined by the **LineGraphDataInterface**
 
 ```javascript
-import {LineGraphDataInterface} from 'cm-d3-graphs';
+import {LineGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const lineData: LineGraphDataInterface[] = [
     {...},
@@ -1235,7 +1235,7 @@ Below an example
   <summary>Configuration</summary>
 
 ```javascript
-import {LineGraphConfigurationInterface} from 'cm-d3-graphs';
+import {LineGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const lineConfs: LineGraphConfigurationInterface = {
   id: 'line_chart',
@@ -1253,7 +1253,7 @@ const lineConfs: LineGraphConfigurationInterface = {
   <summary>Data</summary>
 
 ```javascript
-import {LineGraphDataInterface} from 'cm-d3-graphs';
+import {LineGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const lineData: LineGraphDataInterface[] = [
   {values: [-12, 34], label: 'Label1'},
@@ -1291,7 +1291,7 @@ const lineData: LineGraphDataInterface[] = [
 To configure correctly the graph, it is possible to use the **RangeSliderGraphConfigurationInterface**
 
 ```javascript
-import {RangeSliderGraphConfigurationInterface} from 'cm-d3-graphs';
+import {RangeSliderGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const rangeSliderConf: RangeSliderGraphConfigurationInterface = {
   ...
@@ -1520,7 +1520,7 @@ If not provided, default value will be used.
 The data for the range slider have a specific format, defined by the **RangeSliderGraphDataInterface**
 
 ```javascript
-import {RangeSliderGraphDataInterface} from 'cm-d3-graphs';
+import {RangeSliderGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const rangeSliderData: RangeSliderGraphDataInterface[] = [
     {...},
@@ -1565,7 +1565,7 @@ Below an example
   <summary>Configuration</summary>
 
 ```javascript
-import {RangeSliderGraphConfigurationInterface} from 'cm-d3-graphs';
+import {RangeSliderGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const rangeSldierConfs: RangeSliderGraphConfigurationInterface = {
   id: 'range_slider_chart',
@@ -1583,7 +1583,7 @@ const rangeSldierConfs: RangeSliderGraphConfigurationInterface = {
   <summary>Data</summary>
 
 ```javascript
-import {RangeSliderGraphDataInterface} from 'cm-d3-graphs';
+import {RangeSliderGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const rangeSliderData: RangeSliderGraphDataInterface[] = [
   { value: 1 },
@@ -1631,7 +1631,7 @@ const rangeSliderData: RangeSliderGraphDataInterface[] = [
 To configure correctly the graph, it is possible to use the **TreeGraphConfigurationInterface**
 
 ```javascript
-import {TreeGraphConfigurationInterface} from 'cm-d3-graphs';
+import {TreeGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const treeConf: TreeGraphConfigurationInterface = {
   ...
@@ -1834,7 +1834,7 @@ If not provided, default value will be used.
 The data for the tree have a specific format, defined by the **TreeGraphDataInterface**
 
 ```javascript
-import {TreeGraphDataInterface} from 'cm-d3-graphs';
+import {TreeGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const treeData: TreeGraphDataInterface[] = [
     {...},
@@ -1921,7 +1921,7 @@ Below an example
   <summary>Configuration</summary>
 
 ```javascript
-import {TreeGraphConfigurationInterface} from 'cm-d3-graphs';
+import {TreeGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const treeConfs: TreeGraphConfigurationInterface = {
   id: 'tree_chart',
@@ -1942,7 +1942,7 @@ const treeConfs: TreeGraphConfigurationInterface = {
   <summary>Data</summary>
 
 ```javascript
-import {TreeGraphDataInterface} from 'cm-d3-graphs';
+import {TreeGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const treeData: TreeGraphDataInterface[] = [
   {
@@ -2033,7 +2033,7 @@ const treeData: TreeGraphDataInterface[] = [
 To configure correctly the graph, it is possible to use the **FlowChartGraphConfigurationInterface**
 
 ```javascript
-import {FlowChartGraphConfigurationInterface} from 'cm-d3-graphs';
+import {FlowChartGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const flowChartConf: FlowChartGraphConfigurationInterface = {
   ...
@@ -2276,7 +2276,7 @@ If not provided, default value will be used.
 The data for the flow chart have a specific format, defined by the **FlowChartGraphDataInterface**
 
 ```javascript
-import {FlowChartGraphDataInterface} from 'cm-d3-graphs';
+import {FlowChartGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const flowChartData: FlowChartGraphDataInterface[] = [
     {...},
@@ -2389,7 +2389,7 @@ Below an example
   <summary>Configuration</summary>
 
 ```javascript
-import {FlowChartGraphConfigurationInterface} from 'cm-d3-graphs';
+import {FlowChartGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const flowChartConfs: FlowChartGraphConfigurationInterface = {
     id: 'flow_chart',
@@ -2421,7 +2421,7 @@ const flowChartConfs: FlowChartGraphConfigurationInterface = {
   <summary>Data</summary>
 
 ```javascript
-import {FlowChartGraphDataInterface} from 'cm-d3-graphs';
+import {FlowChartGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const nodesData: FlowChartGraphDataInterface[] = [
   {
@@ -2601,7 +2601,7 @@ const clustersData: FlowChartGraphDataInterface[] = [
 To configure correctly the graph, it is possible to use the **BubbleChartGraphConfigurationInterface**
 
 ```javascript
-import {BubbleChartGraphConfigurationInterface} from 'cm-d3-graphs';
+import {BubbleChartGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const bubbleConf: BubbleChartGraphConfigurationInterface = {
   ...
@@ -2729,7 +2729,7 @@ If not provided, default value will be used.
 The data for the bubble chart have a specific format, defined by the **BubbleChartGraphDataInterface**
 
 ```javascript
-import {BubbleChartGraphDataInterface} from 'cm-d3-graphs';
+import {BubbleChartGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const bubbleData: BubbleChartGraphDataInterface[] = [
     {...},
@@ -2798,7 +2798,7 @@ Below an example
   <summary>Configuration</summary>
 
 ```javascript
-import {BubbleChartGraphConfigurationInterface} from 'cm-d3-graphs';
+import {BubbleChartGraphConfigurationInterface} from '@acimini/cm-d3-graphs';
 
 const bubbleConfs: BubbleChartGraphConfigurationInterface = {
   id: 'bubble_chart',
@@ -2815,7 +2815,7 @@ const bubbleConfs: BubbleChartGraphConfigurationInterface = {
   <summary>Data</summary>
 
 ```javascript
-import {BubbleChartGraphDataInterface} from 'cm-d3-graphs';
+import {BubbleChartGraphDataInterface} from '@acimini/cm-d3-graphs';
 
 const bubbleData: BubbleChartGraphDataInterface[] = [
   {
