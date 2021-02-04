@@ -113,6 +113,8 @@ For the graph data there are a base interface that is suitable for the most of t
 ```
 The component can need more inputs than those shown above. See the sections below to check what is the right way to use the component for the graph you choose.
 
+<span style="color:blue">**IMPORTANT**</span>: the component must be enclosed in an element with **width** and **height** set.
+
 ## Graph types
 
 Below it is shown the list of the available graph types.\
@@ -389,6 +391,8 @@ When the configuration and the data are set, the last step is to import the comp
 <cm-histogram-chart [graphConfigs]="graphConf" [graphData]="graphData"></cm-histogram-chart>
 ```
 
+<span style="color:blue">**IMPORTANT**</span>: the component must be enclosed in an element with **width** and **height** set.
+
 #### <a name="h-example"></a>Example
 
 Below an example
@@ -660,6 +664,8 @@ When the configuration and the data are set, the last step is to import the comp
 <cm-pie-chart [graphConfigs]="graphConf" [graphData]="graphData"></cm-pie-chart>
 ```
 
+<span style="color:blue">**IMPORTANT**</span>: the component must be enclosed in an element with **width** and **height** set.
+
 #### <a name="p-example"></a>Example
 
 Below an example
@@ -913,6 +919,8 @@ When the configuration and the data are set, the last step is to import the comp
 ```angular2html
 <cm-pie-chart [graphConfigs]="graphConf" [graphData]="graphData"></cm-pie-chart>
 ```
+
+<span style="color:blue">**IMPORTANT**</span>: the component must be enclosed in an element with **width** and **height** set.
 
 #### <a name="d-example"></a>Example
 
@@ -1226,6 +1234,8 @@ When the configuration and the data are set, the last step is to import the comp
 ```angular2html
 <cm-line-chart [graphConfigs]="graphConf" [graphData]="graphData"></cm-line-chart>
 ```
+
+<span style="color:blue">**IMPORTANT**</span>: the component must be enclosed in an element with **width** and **height** set.
 
 #### <a name="l-example"></a>Example
 
@@ -1556,6 +1566,8 @@ When the configuration and the data are set, the last step is to import the comp
 ```angular2html
 <cm-range-slider-chart [graphConfigs]="graphConf" [graphData]="graphData"></cm-range-slider-chart>
 ```
+
+<span style="color:blue">**IMPORTANT**</span>: the component must be enclosed in an element with **width** and **height** set.
 
 #### <a name="r-example"></a>Example
 
@@ -1912,6 +1924,8 @@ When the configuration and the data are set, the last step is to import the comp
 ```angular2html
 <cm-tree-chart [graphConfigs]="graphConf" [graphData]="graphData"></cm-tree-chart>
 ```
+
+<span style="color:blue">**IMPORTANT**</span>: the component must be enclosed in an element with **width** and **height** set.
 
 #### <a name="t-example"></a>Example
 
@@ -2381,6 +2395,8 @@ When the configuration and the data are set, the last step is to import the comp
                [edges]="graphEdges" [clusters]="graphClusters"></cm-flow-chart>
 ```
 
+<span style="color:blue">**IMPORTANT**</span>: the component must be enclosed in an element with **width** and **height** set.
+
 #### <a name="f-example"></a>Example
 
 Below an example
@@ -2789,6 +2805,8 @@ When the configuration and the data are set, the last step is to import the comp
 ```angular2html
 <cm-bubble-chart [graphConfigs]="graphConf" [graphData]="graphData"></cm-bubble-chart>
 ```
+
+<span style="color:blue">**IMPORTANT**</span>: the component must be enclosed in an element with **width** and **height** set.
 
 #### <a name="b-example"></a>Example
 
