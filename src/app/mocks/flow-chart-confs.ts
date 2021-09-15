@@ -5,8 +5,7 @@ export const FlowChartConfs: FlowChartGraphConfigurationInterface = {
   type: 'flow-chart',
   nodes: {
     shape: 'circle',
-    circleRadius: 50,
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png'
+    circleRadius: 50
   },
   zoom: {
     minZoom: 0.5,
