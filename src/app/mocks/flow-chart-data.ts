@@ -61,6 +61,10 @@ export const FlowChartData = {
     {
       id: 'p',
       label: 'Node14'
+    },
+    {
+      id: 'q',
+      label: 'Node15'
     }
   ],
   edges: [
@@ -138,7 +142,7 @@ export const FlowChartData = {
     },
     {
       label: 'Fase 2',
-      nodes: ['d', 'o'],
+      nodes: ['d', 'o', 'q'],
       cluster: {
         level: 2,
         label: {

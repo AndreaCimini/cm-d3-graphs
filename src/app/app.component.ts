@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
     {label: 'Flow chart', value: 'flow-chart'},
     {label: 'Bubble chart', value: 'bubble-chart'}
   ];
-  graphSelected = 'pie';
+  graphSelected = 'flow-chart';
 
   graphsConfigurations = {
     histogram: HistogramConfs,

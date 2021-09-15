@@ -46,6 +46,7 @@ export interface FlowChartGraphDataInterface extends BaseGraphDataInterface {
     expandedColor?: string;
     strokeColor?: string;
     labelColor?: string;
+    icon?: string;
   };
   link?: {
     color?: string;

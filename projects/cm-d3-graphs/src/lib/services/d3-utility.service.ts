@@ -282,7 +282,8 @@ export class D3UtilityService {
       collapsedColor: config.nodes.collapsedColor,
       expandedColor: config.nodes.expandedColor,
       strokeColor: config.nodes.strokeColor,
-      labelColor: config.label.color
+      labelColor: config.label.color,
+      icon: config.nodes.icon
     }, inputData.node ? inputData.node : {});
     newData.link = D3UtilityService.merge({
       color: 'lightsteelblue'

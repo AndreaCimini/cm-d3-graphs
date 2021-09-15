@@ -132,28 +132,16 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
       minCord = Math.min(minCord, currentMinCord);
       maxCord = Math.max(maxCord, currentMaxCord);
     }
+    // returns true if the line from (a,b)->(c,d) intersects with (p,q)->(r,s)
+    const intersects = (q1, q2, p1, p2): boolean => {
+      return (q1 >= p1 && q1 <= p2) || (q2 >= p1 && q1 <= p2) || (p1 >= q1 && p1 <= q2);
+    };
+    let previousCluster = null;
+    let positionBeforeUpdate = null;
+    const movedNodes = [];
     // update cluster dimension
     for (const cluster of clusterByLevel) {
-      // check if there are clusters that intersect with current one
-      const intersectClusters = clusterByLevel.filter(c => {
-        let intersectBool;
-        if (this.graphConfigs.orientation === 'vertical') {
-          const topSide =  c['y'] - c['height'] / 2; // tslint:disable-line
-          const bottomSide =  c['y'] + c['height'] / 2; // tslint:disable-line
-          const currentTopSide =  cluster['y'] - cluster['height'] / 2; // tslint:disable-line
-          const currentBottomSide =  cluster['y'] + cluster['height'] / 2; // tslint:disable-line
-          intersectBool = (topSide >= currentTopSide && topSide <= currentBottomSide) || // tslint:disable-line
-            (bottomSide >= currentTopSide && bottomSide <= currentBottomSide); // tslint:disable-line
-        } else {
-          const leftSide =  c['x'] - c['width'] / 2; // tslint:disable-line
-          const rightSide =  c['x'] + c['width'] / 2; // tslint:disable-line
-          const currentLeftSide =  cluster['x'] - cluster['width'] / 2; // tslint:disable-line
-          const currentRightSide =  cluster['x'] + cluster['width'] / 2; // tslint:disable-line
-          intersectBool = (leftSide >= currentLeftSide && leftSide <= currentRightSide) || // tslint:disable-line
-            (rightSide >= currentLeftSide && rightSide <= currentRightSide); // tslint:disable-line
-        }
-        return c.id !== cluster.id && intersectBool;
-      });
+      // for full space cluster, adjust dimensions and position
       if (this.graphConfigs.orientation === 'vertical') {
         cluster['x'] = (minCord + maxCord) / 2; // tslint:disable-line
         cluster['width'] = maxCord - minCord; // tslint:disable-line
@@ -161,43 +149,76 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
         cluster['y'] = (minCord + maxCord) / 2; // tslint:disable-line
         cluster['height'] = maxCord - minCord; // tslint:disable-line
       }
-      if (intersectClusters && intersectClusters.length > 0) {
-        // move all the nodes, that follow the current cluster, of one level
+      // move all clusters that intersect previous ones
+      // the first cluster isn't moved
+      if (previousCluster) {
+        if (this.graphConfigs.orientation === 'vertical' &&
+          (intersects(cluster['y'], cluster['y'] + cluster['height'], previousCluster['y'], previousCluster['y'] + previousCluster['height']) || // tslint:disable-line
+          cluster['y'] - previousCluster['y'] - previousCluster['height'] > this.graphConfigs.nodes.distanceBetweenParentAndChild) || // tslint:disable-line
+          cluster['y'] + cluster['height'] <= previousCluster['y']) { // tslint:disable-line
+          positionBeforeUpdate = cluster['y']; // tslint:disable-line
+          cluster['y'] = previousCluster['y'] + previousCluster['height'] / 2 + cluster['height'] / 2 + this.graphConfigs.nodes.distanceBetweenParentAndChild; // tslint:disable-line
+        } else if (this.graphConfigs.orientation === 'horizontal' &&
+          (intersects(cluster['x'], cluster['x'] + cluster['width'], previousCluster['x'], previousCluster['x'] + previousCluster['width']) || // tslint:disable-line
+          cluster['x'] - previousCluster['x'] - previousCluster['width'] > this.graphConfigs.nodes.distanceBetweenParentAndChild) || // tslint:disable-line
+          cluster['x'] + cluster['width'] <= previousCluster['x']) { // tslint:disable-line
+          positionBeforeUpdate = cluster['x']; // tslint:disable-line
+          cluster['x'] = previousCluster['x'] + previousCluster['width'] / 2 + cluster['width'] / 2 + this.graphConfigs.nodes.distanceBetweenParentAndChild; // tslint:disable-line
+        } else {
+          positionBeforeUpdate = null;
+        }
+      }
+      // set previous cluster equal to current one
+      previousCluster = cluster;
+      if (positionBeforeUpdate) {
+        // if there was a movement, move all the nodes in the the current cluster
         for (const node of this.nodesArranged) {
-          if (this.graphConfigs.orientation === 'vertical' && node['y'] >= cluster['y'] && cluster.nodes.indexOf(node.id) === -1) { // tslint:disable-line
-            node['y'] += cluster['height'] + this.graphConfigs.nodes.distanceBetweenParentAndChild; // tslint:disable-line
-          } else if (this.graphConfigs.orientation === 'horizontal' && node['x'] >= cluster['x'] && cluster.nodes.indexOf(node.id) === -1) { // tslint:disable-line
-            node['x'] += cluster['width'] + this.graphConfigs.nodes.distanceBetweenParentAndChild; // tslint:disable-line
+          if (this.graphConfigs.orientation === 'vertical' && cluster.nodes.indexOf(node.id) > -1) { // tslint:disable-line
+            const delta = cluster['y'] - positionBeforeUpdate; // tslint:disable-line
+            node['y'] += delta; // tslint:disable-line
+            if (delta !== 0) {
+              movedNodes.push({id: node.id, delta});
+            }
+          } else if (this.graphConfigs.orientation === 'horizontal' && cluster.nodes.indexOf(node.id) > -1) { // tslint:disable-line
+            const delta = cluster['x'] - positionBeforeUpdate; // tslint:disable-line
+            node['x'] += delta; // tslint:disable-line
+            if (delta !== 0) {
+              movedNodes.push({id: node.id, delta});
+            }
           }
         }
-        // move all following clusters
-        for (const oCluster of clusterByLevel) {
-          if (this.graphConfigs.orientation === 'vertical' && oCluster['y'] >= cluster['y'] && oCluster.id !== cluster.id) { // tslint:disable-line
-            oCluster['y'] += cluster['height'] + this.graphConfigs.nodes.distanceBetweenParentAndChild; // tslint:disable-line
-          } else if (this.graphConfigs.orientation === 'horizontal' && oCluster['x'] >= cluster['x'] && oCluster.id !== cluster.id) { // tslint:disable-line
-            oCluster['x'] += cluster['width'] + this.graphConfigs.nodes.distanceBetweenParentAndChild; // tslint:disable-line
-          }
-        }
-        // move all following links
+        // if there was a movement, move all the links that link nodes in the the current cluster
         for (const edge of this.edgesArranged) {
-          if (this.graphConfigs.orientation === 'vertical' &&
-            // exclude all path that end in current cluster
-            cluster.nodes.indexOf(edge.target) === -1) {
-            edge['points'].forEach((point, index: number) => { // tslint:disable-line
-              if (point.y >= cluster['y'] - cluster['height'] / 2 && cluster.nodes.indexOf(edge.source) === -1 || // tslint:disable-line
-                // leave start point untouched if it comes from a node in current cluster
-                (cluster.nodes.indexOf(edge.source) !== -1 && index !== 0)) {
-                point.y += cluster['height'] + this.graphConfigs.nodes.distanceBetweenParentAndChild; // tslint:disable-line
+          if (this.graphConfigs.orientation === 'vertical' && cluster.nodes.indexOf(edge.target) > -1) {
+            const delta = cluster['y'] - positionBeforeUpdate; // tslint:disable-line
+            edge['points'].forEach((point, index) => { // tslint:disable-line
+              // if current edge starts and end in current cluster, move all points
+              // else check if source node has moved or not. In the second case, leave start point untouched
+              if (cluster.nodes.indexOf(edge.source) > -1) {
+                point.y += point.y >= positionBeforeUpdate - cluster['height'] / 2 ? delta : 0; // tslint:disable-line
+              } else {
+                const nodeMoved = movedNodes.find(n => n.id === edge.source);
+                if (nodeMoved) {
+                  point.y += nodeMoved.delta;
+                } else {
+                  point.y += index > 0 && point.y >= positionBeforeUpdate - cluster['height'] / 2 ? delta : 0; // tslint:disable-line
+                }
               }
             });
-          } else if (this.graphConfigs.orientation === 'horizontal' &&
-            // exclude all path that end in current cluster
-            cluster.nodes.indexOf(edge.target) === -1) {
-            edge['points'].forEach((point, index: number) => { // tslint:disable-line
-              if (point.x >= cluster['x'] - cluster['width'] / 2 && cluster.nodes.indexOf(edge.source) === -1 || // tslint:disable-line
-                // leave start point untouched if it comes from a node in current cluster
-                (cluster.nodes.indexOf(edge.source) !== -1 && index !== 0)) {
-                point.x += cluster['width'] + this.graphConfigs.nodes.distanceBetweenParentAndChild; // tslint:disable-line
+          } else if (this.graphConfigs.orientation === 'horizontal' && cluster.nodes.indexOf(edge.target) > -1) {
+            const delta = cluster['x'] - positionBeforeUpdate; // tslint:disable-line
+            edge['points'].forEach((point, index) => { // tslint:disable-line
+              // if current edge starts and end in current cluster, move all points
+              // else check if source node has moved or not. In the second case, leave start point untouched
+              if (cluster.nodes.indexOf(edge.source) > -1) {
+                point.x += point.x >= positionBeforeUpdate - cluster['width'] / 2 ? delta : 0; // tslint:disable-line
+              } else {
+                const nodeMoved = movedNodes.find(n => n.id === edge.source);
+                if (nodeMoved) {
+                  point.x += nodeMoved.delta;
+                } else {
+                  point.x += index > 0 && point.x >= positionBeforeUpdate - cluster['width'] / 2 ? delta : 0; // tslint:disable-line
+                }
               }
             });
           }

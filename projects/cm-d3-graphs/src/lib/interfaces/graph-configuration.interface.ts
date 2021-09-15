@@ -154,6 +154,7 @@ export interface FlowChartGraphConfigurationInterface extends BaseGraphConfigura
     distanceBetweenParentAndChild?: number;
     expandable?: boolean;
     maxInitialExpandedLevel?: number;
+    icon?: string;
   };
   links?: {
     color?: string;

@@ -2158,7 +2158,8 @@ An **object** that defines the appearance of the nodes.
     distanceBetweenCousins: number,
     distanceBetweenParentAndChild: number,
     expandable: boolean,
-    maxInitialExpandedLevel: number
+    maxInitialExpandedLevel: number,
+    icon: string
 }
 ```
 
@@ -2175,6 +2176,7 @@ An **object** that defines the appearance of the nodes.
 * **distanceBetweenParentAndChild**: defines the distance between parent and its children.
 * **expandable**: sets if nodes with children can be collapsed and expanded.
 * **maxInitialExpandedLevel**: if **expandable** is true, defines the last level visible.
+* **icon**: sets the icon for all nodes.. It can be overwritten by single data (see section below).
 
 If not provided, default value will be used.
 
@@ -2326,7 +2328,8 @@ An **object** that defines the appearance of the single node.
     collapsedColor: string,
     expandedColor: string,
     strokeColor: string,
-    labelColor: string
+    labelColor: string,
+    icon: string
 }
 ```
 
@@ -2335,6 +2338,7 @@ An **object** that defines the appearance of the single node.
 * **expandedColor**: defines the color of the node when it is expanded.
 * **strokeColor**: defines the color of the border of the node.
 * **labelColor**: defines the color of the node label.
+* **icon**: sets the icon for single node.
 
 If not provided, will be used the values set in the configuration.
 

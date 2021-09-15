@@ -103,6 +103,17 @@ export abstract class BaseNodesCharts extends BaseCharts {
     nodesShape.filter(d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'circle')
       .attr('r', graphConfigs.nodes.circleRadius);
 
+    // adds image to the node
+    nodesEnter
+      .filter(d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'circle' &&
+        (d.data as FlowChartGraphDataInterface).node.icon)
+      .append('svg:image')
+      .attr('xlink:href',  d => d.data.node.icon)
+      .attr('x', - graphConfigs.nodes.circleRadius / 2)
+      .attr('y', - graphConfigs.nodes.circleRadius / 2)
+      .attr('height', graphConfigs.nodes.circleRadius)
+      .attr('width', graphConfigs.nodes.circleRadius)
+
     // manage other shapes
     nodesShape.filter(d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rect' ||
       (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'square')
@@ -111,6 +122,18 @@ export abstract class BaseNodesCharts extends BaseCharts {
       .attr('ry', 4)
       .attr('rx', 4);
 
+    // adds image to the node
+    nodesEnter
+      .filter(d => ((d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rect' ||
+        (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'square') &&
+        (d.data as FlowChartGraphDataInterface).node.icon)
+      .append('svg:image')
+      .attr('xlink:href',  d => d.data.node.icon)
+      .attr('x', d => d.width / 4)
+      .attr('y', d => d.height / 4 - (d.data.label ? 15 : 0))
+      .attr('height', d => d.width / 2)
+      .attr('width', d => d.height / 2)
+
     // manage rhombus shape
     nodesShape.filter(d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rhombus')
       .attr('width', d => d.width / Math.sqrt(2))
@@ -118,6 +141,17 @@ export abstract class BaseNodesCharts extends BaseCharts {
       .attr('ry', 4)
       .attr('rx', 4)
       .attr('transform', 'rotate(45)');
+
+    // adds image to the node
+    nodesEnter
+      .filter(d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rhombus' &&
+        (d.data as FlowChartGraphDataInterface).node.icon)
+      .append('svg:image')
+      .attr('xlink:href',  d => d.data.node.icon)
+      .attr('x', d => - d.width / 4)
+      .attr('y', d => d.height / 4 - (d.data.label ? 15 : 0))
+      .attr('height', d => d.width / 2)
+      .attr('width', d => d.height / 2)
 
     return {nodes, nodesEnter};
   }
@@ -135,11 +169,11 @@ export abstract class BaseNodesCharts extends BaseCharts {
         } else if ((d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rect' ||
           (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'square') {
           // calc y translate quantity (the text is below the upper edge of the rectangle and middle anchored to the left upper edge)
-          const yTranslate = (d.height - textDimensions.height) / 2;
+          const yTranslate = (d.height - textDimensions.height) / 2 + (d.data.node.icon ? d.height / 4 : 0);
           return 'translate(' + (d.width / 2) + ', ' + yTranslate + ')';
         } else if ((d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rhombus') {
           // calc y translate quantity (the text is below the upper edge of the rectangle and middle anchored to the left upper edge)
-          const yTranslate = (d.height - textDimensions.height) / 2;
+          const yTranslate = (d.height - textDimensions.height) / 2 + (d.data.node.icon ? d.height / 4 : 0);
           return 'translate(' + 0 + ', ' + yTranslate + ')';
         }
       });
@@ -174,6 +208,7 @@ export abstract class BaseNodesCharts extends BaseCharts {
     // append path for each link
     const linksEnter = links.enter()
       .append('path')
+      .attr('id', d => 'link_' + d.data.source + '_' + d.data.target)
       .attr('class', 'link')
       .style('fill', 'none')
       .style('stroke', d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).link.color)
