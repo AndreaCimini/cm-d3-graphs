@@ -1,6 +1,6 @@
 {
   "name": "@acimini/cm-d3-graphs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Andrea Cimini",
   "repository": {
     "type": "git",
@@ -27,10 +27,13 @@
   ],
   "license": "Apache",
   "peerDependencies": {
-    "@angular/common": "^9.1.13",
-    "@angular/core": "^9.1.13",
+    "@angular/common": "~12.2.5",
+    "@angular/core": "~12.2.5",
     "d3": "^6.3.1",
     "dagre": "^0.8.5"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   },
   "devDependencies": {}
 }
