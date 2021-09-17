@@ -1,6 +1,6 @@
 {
   "name": "cm-d3-graphs-app",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Andrea Cimini",
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
     "@angular/router": "~12.2.5",
     "ang-jsoneditor": "^1.10.4",
     "core-js": "^3.6.4",
-    "d3": "^6.3.1",
+    "d3": "^7.0.1",
     "dagre": "^0.8.5",
     "jsoneditor": "^9.1.8",
     "rxjs": "~6.5.5",
@@ -62,7 +62,7 @@
     "@angular/cli": "~12.2.5",
     "@angular/compiler-cli": "~12.2.5",
     "@angular/language-service": "~12.2.5",
-    "@types/d3": "^6.2.0",
+    "@types/d3": "^7.0.0",
     "@types/dagre": "^0.7.44",
     "@types/jasminewd2": "~2.0.8",
     "@types/node": "^13.11.0",

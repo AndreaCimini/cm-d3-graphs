@@ -135,9 +135,15 @@ export class RangeSliderChartComponent extends BaseAxesCharts implements OnInit,
       axisYRange: this.graphConfigs.orientation === 'vertical' ? axisRange : undefined,
       groupedAxis: undefined,
       tickValuesX: this.graphConfigs.orientation === 'horizontal' ?
-        this.graphDataArranged.map(d => (d as RangeSliderGraphDataInterface).value) : undefined,
+        this.graphDataArranged.map(d =>
+          this.graphConfigs.interval.type === 'discrete' ? (d as RangeSliderGraphDataInterface).value.toString() :
+            (d as RangeSliderGraphDataInterface).value
+        ) : undefined,
       tickValuesY: this.graphConfigs.orientation === 'vertical' ?
-        this.graphDataArranged.map(d => (d as RangeSliderGraphDataInterface).value) : undefined
+        this.graphDataArranged.map(d =>
+          this.graphConfigs.interval.type === 'discrete' ? (d as RangeSliderGraphDataInterface).value.toString() :
+            (d as RangeSliderGraphDataInterface).value
+        ) : undefined
     };
     // add axes
     this.addAxes(this.rangeSliderChart, this.graphDataArranged, this.graphConfigs, slider, axes);
@@ -186,8 +192,10 @@ export class RangeSliderChartComponent extends BaseAxesCharts implements OnInit,
       .append('g')
       .attr('class', 'parameter-value')
       .attr('transform', d => 'translate(' +
-        (this.graphConfigs.orientation === 'horizontal' ? axis(d.value) : this.graphWidth / 2) + ',' +
-        (this.graphConfigs.orientation === 'horizontal' ? this.graphHeight / 2 : axis(d.value))
+        (this.graphConfigs.orientation === 'horizontal' ?
+          axis(this.graphConfigs.interval.type === 'discrete' ? d.value.toString() : d.value) : this.graphWidth / 2) + ',' +
+        (this.graphConfigs.orientation === 'horizontal' ? this.graphHeight / 2 :
+          axis(this.graphConfigs.interval.type === 'discrete' ? d.value.toString() : d.value))
         + ')')
       .on('mouseenter', e => {
         if (this.graphConfigs.handle.showTooltip === 'on-hover') {
@@ -331,19 +339,33 @@ export class RangeSliderChartComponent extends BaseAxesCharts implements OnInit,
       .ease(d3.easeQuadOut)
       .duration(200)
       .attr('transform', d => 'translate(' +
-        (this.graphConfigs.orientation === 'horizontal' ? axis(d.value) : this.graphWidth / 2) + ',' +
-        (this.graphConfigs.orientation === 'horizontal' ? this.graphHeight / 2 : axis(d.value))
+        (this.graphConfigs.orientation === 'horizontal' ?
+          axis(this.graphConfigs.interval.type === 'discrete' ? d.value.toString() : d.value) : this.graphWidth / 2) + ',' +
+        (this.graphConfigs.orientation === 'horizontal' ? this.graphHeight / 2 :
+          axis(this.graphConfigs.interval.type === 'discrete' ? d.value.toString() : d.value))
         + ')');
     // update track fill
     const firstData: RangeSliderGraphDataInterface = this.graphDataArranged[0];
     if (this.graphConfigs.orientation === 'horizontal') {
       slider.select('.track-fill')
-        .attr('x1', axis(this.graphConfigs.handle.type === 'double' ? this.handleDomain[0].value : firstData.value))
-        .attr('x2', axis(this.graphConfigs.handle.type === 'double' ? this.handleDomain[1].value : this.handleDomain[0].value));
+        .attr('x1', axis(this.graphConfigs.handle.type === 'double' ?
+          (this.graphConfigs.interval.type === 'discrete' ? this.handleDomain[0].value.toString() : this.handleDomain[0].value ) :
+          (this.graphConfigs.interval.type === 'discrete' ? firstData.value.toString() : firstData.value )
+        ))
+        .attr('x2', axis(this.graphConfigs.handle.type === 'double' ?
+          (this.graphConfigs.interval.type === 'discrete' ? this.handleDomain[1].value.toString() : this.handleDomain[1].value ) :
+          (this.graphConfigs.interval.type === 'discrete' ? this.handleDomain[0].value.toString() : this.handleDomain[0].value )
+        ));
     } else {
       slider.select('.track-fill')
-        .attr('y1', axis(this.graphConfigs.handle.type === 'double' ? this.handleDomain[0].value : firstData.value))
-        .attr('y2', axis(this.graphConfigs.handle.type === 'double' ? this.handleDomain[1].value : this.handleDomain[0].value));
+        .attr('y1', axis(this.graphConfigs.handle.type === 'double' ?
+          (this.graphConfigs.interval.type === 'discrete' ? this.handleDomain[0].value.toString() : this.handleDomain[0].value ) :
+          (this.graphConfigs.interval.type === 'discrete' ? firstData.value.toString() : firstData.value )
+        ))
+        .attr('y2', axis(this.graphConfigs.handle.type === 'double' ?
+          (this.graphConfigs.interval.type === 'discrete' ? this.handleDomain[1].value.toString() : this.handleDomain[1].value ) :
+          (this.graphConfigs.interval.type === 'discrete' ? this.handleDomain[0].value.toString() : this.handleDomain[0].value )
+        ));
     }
     // update handle tooltip
     if (this.graphConfigs.handle.showTooltip === 'always' || this.graphConfigs.handle.showTooltip === 'on-hover') {
@@ -414,7 +436,10 @@ export class RangeSliderChartComponent extends BaseAxesCharts implements OnInit,
         handleIndex = 1;
       } else {
         handleIndex = d3.leastIndex(
-          this.handleDomain.map(d => Math.abs(axis(d.value) - axis(newValue.value)))
+          this.handleDomain.map(d => Math.abs(
+            axis(this.graphConfigs.interval.type === 'discrete' ? d.value.toString() : d.value) -
+            axis(this.graphConfigs.interval.type === 'discrete' ? newValue.value.toString() : newValue.value)
+          ))
         );
       }
       // prevent outside range event

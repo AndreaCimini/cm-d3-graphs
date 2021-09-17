@@ -1,6 +1,6 @@
 {
   "name": "@acimini/cm-d3-graphs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Andrea Cimini",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
   "peerDependencies": {
     "@angular/common": "~12.2.5",
     "@angular/core": "~12.2.5",
-    "d3": "^6.3.1",
+    "d3": "^7.0.1",
     "dagre": "^0.8.5"
   },
   "dependencies": {

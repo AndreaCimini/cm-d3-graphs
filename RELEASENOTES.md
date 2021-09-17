@@ -25,3 +25,9 @@
 | -------- | ---- | ---- | ---- |
 | Migration to Angular 12 | **15-09-2021** | NEW | |
 
+## [0.0.5]
+
+| Activity | Date | Type | Notes |
+| -------- | ---- | ---- | ---- |
+| Migration to D3 7 | **17-09-2021** | NEW | |
+

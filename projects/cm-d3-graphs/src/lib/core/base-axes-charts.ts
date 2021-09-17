@@ -30,7 +30,7 @@ export abstract class BaseAxesCharts extends BaseCharts {
   private calcMinAndMaxData(graphConfigs: HistogramGraphConfigurationInterface): { min: number, max: number } {
     const graphValues = this.graphDataArranged.map((d: HistogramGraphDataInterface) => d.values).reduce((arr: number[], elem: number[]) => {
       if (graphConfigs.groupedType === 'inline') {
-        return arr.concat(elem)
+        return arr.concat(elem);
       } else if (graphConfigs.groupedType === 'stacked') {
         const sums = elem.reduce((a: number[], b: number) => {
           // first element is for positive sum
@@ -277,7 +277,7 @@ export abstract class BaseAxesCharts extends BaseCharts {
         .call(gridLinesY);
 
       grid.selectAll('line')
-        .attr('stroke', graphConfigs.grid.color)
+        .attr('stroke', graphConfigs.grid.color);
     }
     if (graphConfigs.grid.axisX) {
       const gridLinesX = d3.axisBottom(axes.x)
@@ -291,13 +291,13 @@ export abstract class BaseAxesCharts extends BaseCharts {
         .call(gridLinesX);
 
       grid.selectAll('line')
-        .attr('stroke', graphConfigs.grid.color)
+        .attr('stroke', graphConfigs.grid.color);
     }
   }
 
   protected addAxes(graphContainer: ElementRef, graphData: AxisGraphDataInterface[], graphConfigs: AxesGraphInterface,
-                    g, axes: { x, y, axisXRange, axisYRange, groupedAxis, tickValuesX?: string[] | number[],
-      tickValuesY?: string[] | number[]}) {
+                    g, axes: { x, y, axisXRange, axisYRange, groupedAxis, tickValuesX?: (string | number)[],
+      tickValuesY?: (string | number)[]}) {
     // remove old axes
     d3.select(graphContainer.nativeElement).select('.x-axis').remove();
     d3.select(graphContainer.nativeElement).select('.y-axis').remove();
@@ -317,11 +317,11 @@ export abstract class BaseAxesCharts extends BaseCharts {
 
       // change axis color
       axis.select('path')
-        .attr('stroke', graphConfigs.axis.lineColor)
+        .attr('stroke', graphConfigs.axis.lineColor);
       axis.selectAll('line')
-        .attr('stroke', graphConfigs.axis.lineColor)
+        .attr('stroke', graphConfigs.axis.lineColor);
       axis.selectAll('text')
-        .attr('fill', graphConfigs.axis.textColor)
+        .attr('fill', graphConfigs.axis.textColor);
 
       // manage tick visualization
       this.manageAxisTicks(graphContainer, 'vertical', graphConfigs.axis.labelXOrientation,
@@ -344,11 +344,11 @@ export abstract class BaseAxesCharts extends BaseCharts {
 
       // change axis color
       axis.select('path')
-        .attr('stroke', graphConfigs.axis.lineColor)
+        .attr('stroke', graphConfigs.axis.lineColor);
       axis.selectAll('line')
-        .attr('stroke', graphConfigs.axis.lineColor)
+        .attr('stroke', graphConfigs.axis.lineColor);
       axis.selectAll('text')
-        .attr('fill', graphConfigs.axis.textColor)
+        .attr('fill', graphConfigs.axis.textColor);
 
       // manage tick visualization
       this.manageAxisTicks(graphContainer, 'horizontal', graphConfigs.axis.labelXOrientation,
@@ -428,7 +428,7 @@ export abstract class BaseAxesCharts extends BaseCharts {
         this.graphHeight * graphConfigs.maxDisplayedNumber / this.graphDataArranged.length)
       .attr('width', () => {
         return this.scrollX ? this.graphWidth * graphConfigs.maxDisplayedNumber / this.graphDataArranged.length :
-          this.scrollHeight
+          this.scrollHeight;
       })
       .attr('cursor', () => (this.scrollX ? 'ew-resize' : 'ns-resize'))
       .call( // init drag events
@@ -487,14 +487,14 @@ export abstract class BaseAxesCharts extends BaseCharts {
         .selectAll('g')
         .data(graphConfigs.groups)
         .enter()
-        .append('g')
+        .append('g');
       legendElements
         .append('rect')
         .attr('width', legendElementDim)
         .attr('height', legendElementDim)
         .attr('rx', 5)
         .attr('ry', 5)
-        .attr('fill', d => d.color)
+        .attr('fill', d => d.color);
       legendElements
         .append('text')
         .attr('x', legendElementDim + legendElementPadding.right)
@@ -514,7 +514,7 @@ export abstract class BaseAxesCharts extends BaseCharts {
         // translate elements
         this.calcHorizontalLegendPosition(legendElements, legendElementPadding, this.legendY, legendElementDim);
         // calc legend dimension
-        const legendDimension = legendContainer.node().getBBox().height + 2 * legendPadding
+        const legendDimension = legendContainer.node().getBBox().height + 2 * legendPadding;
         const axisDimension = this.legendY === 'bottom' ? g.select('.x-axis').node().getBBox().height : 0;
         // translate container
         const xOffset = (this.graphWidth - legendContainer.node().getBBox().width) / 2;

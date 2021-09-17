@@ -208,9 +208,9 @@ export class PieChartComponent extends BasePieCharts implements OnInit, OnChange
       .attr('stroke-width', 3)
       .attr('d', arc) // create the SVG path using the associated data (pie) with the arc drawing function
       .style('cursor', this.graphConfigs.events.clickOnElement ? 'pointer' : '')
-      .on('mouseenter', (e, d) => {
+      .on('mouseenter', (e, d, b) => {
         if (!this.doingTransition) {
-          const nodes = arcs.nodes();
+          const nodes = arcs.selectAll('path').nodes();
           this.pathAnim(nodes, nodes.indexOf(e.currentTarget), 1, levels);
           // show tooltip
           this.showTooltip(e, g, this.graphConfigs, d.data);
@@ -219,7 +219,7 @@ export class PieChartComponent extends BasePieCharts implements OnInit, OnChange
       .on('mouseout', e => {
         if (!this.doingTransition &&
           (!(e.toElement as HTMLElement) || (e.toElement as HTMLElement).className !== 'd3-tooltip')) {
-          const nodes = arcs.nodes();
+          const nodes = arcs.selectAll('path').nodes();
           this.pathAnim(nodes, nodes.indexOf(e.currentTarget), 0, levels);
           // hide tooltip
           this.hideTooltip(g);
