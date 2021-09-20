@@ -36,6 +36,7 @@ export interface TreeGraphDataInterface extends BaseGraphDataInterface {
   };
   link?: {
     color?: string;
+    width?: string;
   };
 }
 
@@ -50,6 +51,7 @@ export interface FlowChartGraphDataInterface extends BaseGraphDataInterface {
   };
   link?: {
     color?: string;
+    width?: string;
   };
   source?: string;
   target?: string;

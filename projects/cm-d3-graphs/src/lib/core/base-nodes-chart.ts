@@ -212,7 +212,7 @@ export abstract class BaseNodesCharts extends BaseCharts {
       .attr('class', 'link')
       .style('fill', 'none')
       .style('stroke', d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).link.color)
-      .style('stroke-width', '0.125rem');
+      .style('stroke-width', d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).link.width);
 
     // add arrow
     if (graphConfigs.links.arrow) {

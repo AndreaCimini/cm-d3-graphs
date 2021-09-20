@@ -1800,13 +1800,15 @@ An **object** that defines the appearance of the links.
 {
     color: string,
     arrow: boolean,
-    arrowDirection: 'start' | 'end'
+    arrowDirection: 'start' | 'end',
+    width: string
 }
 ```
 
 * **color**: defines the color of the links.
 * **arrow**: if **true** add arrows to the links.
 * **arrowDirection**: if arrow is **true**, set the position of the arrow.
+* **width**: defines the width of the links.
 
 If not provided, default value will be used.
 
@@ -1814,7 +1816,8 @@ If not provided, default value will be used.
 {
     color: 'lightsteelblue',
     arrow: true,
-    arrowDirection: 'end'
+    arrowDirection: 'end',
+    width: '0.125rem'
 }
 ```
 
@@ -1900,10 +1903,12 @@ An **object** that defines the appearance of the single link.
 ```javascript
 {
     color: string,
+    width: string
 }
 ```
 
 * **color**: defines the color of the single link.
+* **width**: defines the width of the single link.
 
 If not provided, will be used the values set in the configuration.
 
@@ -2205,7 +2210,8 @@ An **object** that defines the appearance of the links.
     color: string,
     arrow: boolean,
     arrowDirection: 'start' | 'end',
-    shape: 'smooth' | 'straight'
+    shape: 'smooth' | 'straight',
+    width: string
 }
 ```
 
@@ -2213,6 +2219,7 @@ An **object** that defines the appearance of the links.
 * **arrow**: if **true** add arrows to the links.
 * **arrowDirection**: if arrow is **true**, set the position of the arrow.
 * **shape**: defines the shape of the links.
+* **width**: defines the width of the links.
 
 If not provided, default value will be used.
 
@@ -2221,7 +2228,8 @@ If not provided, default value will be used.
     color: 'lightsteelblue',
     arrow: true,
     arrowDirection: 'end',
-    shape: 'smooth'
+    shape: 'smooth',
+    width: '0.125rem'
 }
 ```
 
@@ -2354,11 +2362,13 @@ An **object** that defines the appearance of the single link.
 
 ```javascript
 {
-    color: string
+    color: string,
+    width: string
 }
 ```
 
 * **color**: defines the color of the single link.
+* **width**: defines the width of the single link.
 
 If not provided, will be used the values set in the configuration.
 

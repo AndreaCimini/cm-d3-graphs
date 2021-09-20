@@ -123,6 +123,7 @@ export interface TreeGraphConfigurationInterface extends BaseGraphConfigurationI
     color?: string;
     arrow?: boolean;
     arrowDirection?: 'start' | 'end';
+    width?: string;
   };
   label?: {
     color?: string;
@@ -161,6 +162,7 @@ export interface FlowChartGraphConfigurationInterface extends BaseGraphConfigura
     arrow?: boolean;
     arrowDirection?: 'start' | 'end';
     shape?: 'smooth' | 'straight';
+    width?: string;
   };
   label?: {
     color?: string;

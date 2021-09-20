@@ -38,3 +38,9 @@
 | Flow chart link shape | **20-09-2021** | IMPROVEMENT | Added link shape option
 | Flow chart cluster shape | **20-09-2021** | IMPROVEMENT | Added cluster shape option|
 
+## [0.0.7]
+
+| Activity | Date | Type | Notes |
+| -------- | ---- | ---- | ---- |
+| Flow chart link width | **20-09-2021** | IMPROVEMENT | Added link width option
+| Tree chart link width | **20-09-2021** | IMPROVEMENT | Added link width option

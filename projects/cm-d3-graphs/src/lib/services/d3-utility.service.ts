@@ -154,7 +154,8 @@ export class D3UtilityService {
     defaultConfigurations.links = {
       color: 'lightsteelblue',
       arrow: true,
-      arrowDirection: 'end'
+      arrowDirection: 'end',
+      width: '0.125rem'
     };
     defaultConfigurations.label = {
       color: 'black',
@@ -184,7 +185,8 @@ export class D3UtilityService {
       color: 'lightsteelblue',
       arrow: true,
       arrowDirection: 'end',
-      shape: 'straight'
+      shape: 'straight',
+      width: '0.125rem'
     };
     defaultConfigurations.label = {
       color: 'black',
@@ -274,7 +276,8 @@ export class D3UtilityService {
       labelColor: config.label.color
     }, inputData.node ? inputData.node : {});
     newData.link = D3UtilityService.merge({
-      color: 'lightsteelblue'
+      color: 'lightsteelblue',
+      width: config.links.width
     }, inputData.link ? inputData.link : {});
   }
 
@@ -288,7 +291,8 @@ export class D3UtilityService {
       icon: config.nodes.icon
     }, inputData.node ? inputData.node : {});
     newData.link = D3UtilityService.merge({
-      color: 'lightsteelblue'
+      color: 'lightsteelblue',
+      width: config.links.width
     }, inputData.link ? inputData.link : {});
     newData.cluster = D3UtilityService.merge({
       strokeColor: config.clusters.strokeColor,
