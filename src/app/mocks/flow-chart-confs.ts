@@ -12,11 +12,13 @@ export const FlowChartConfs: FlowChartGraphConfigurationInterface = {
     maxZoom: 4
   },
   links: {
-    arrowDirection: 'end'
+    arrowDirection: 'end',
+    shape: 'smooth'
   },
   orientation: 'horizontal',
   clusters: {
     position: 'full-space',
+    shape: 'rectangle',
     label: {
       position: 'bottom-right'
     }

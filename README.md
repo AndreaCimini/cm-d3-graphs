@@ -2204,13 +2204,15 @@ An **object** that defines the appearance of the links.
 {
     color: string,
     arrow: boolean,
-    arrowDirection: 'start' | 'end'
+    arrowDirection: 'start' | 'end',
+    shape: 'smooth' | 'straight'
 }
 ```
 
 * **color**: defines the color of the links.
 * **arrow**: if **true** add arrows to the links.
 * **arrowDirection**: if arrow is **true**, set the position of the arrow.
+* **shape**: defines the shape of the links.
 
 If not provided, default value will be used.
 
@@ -2218,7 +2220,8 @@ If not provided, default value will be used.
 {
     color: 'lightsteelblue',
     arrow: true,
-    arrowDirection: 'end'
+    arrowDirection: 'end',
+    shape: 'smooth'
 }
 ```
 
@@ -2253,6 +2256,7 @@ An **object** that defines the appearance of the clusters.
   position: 'default' | 'full-space',
   strokeColor: string,
   fillColor: string,
+  borderRadius: number,
   label: {
     color: string,
     position: 'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center',
@@ -2263,8 +2267,9 @@ An **object** that defines the appearance of the clusters.
 ```
 
 * **position**: defines if the cluster is drawn around its nodes, or if it occupies the total width/height of the graph in case of vertical/horizontal orientation.
-* **strokeColor**: defines the border color of te cluster.
-* **fillColor**: defines the inner color of te cluster.
+* **strokeColor**: defines the border color of the clusters.
+* **fillColor**: defines the inner color of the clusters.
+* **shape**: defines the shape of the clusters.
 * **label**: an object that defines the appearance of the cluster label.
   * **color**: defines the color of the label.
   * **position**: defines the position of the label within the cluster.
@@ -2278,6 +2283,7 @@ If not provided, default value will be used.
     strokeColor: 'lightsteelblue',
     fillColor: 'transparent',
     position: 'default',
+    shape: 'rectangle',
     label: {
         color: 'lightsteelblue',
         position: 'center',

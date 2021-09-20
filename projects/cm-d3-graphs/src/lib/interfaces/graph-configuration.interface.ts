@@ -160,6 +160,7 @@ export interface FlowChartGraphConfigurationInterface extends BaseGraphConfigura
     color?: string;
     arrow?: boolean;
     arrowDirection?: 'start' | 'end';
+    shape?: 'smooth' | 'straight';
   };
   label?: {
     color?: string;
@@ -169,6 +170,7 @@ export interface FlowChartGraphConfigurationInterface extends BaseGraphConfigura
     position?: 'default' | 'full-space';
     strokeColor?: string;
     fillColor?: string;
+    shape?: 'rectangle' | 'ellipse';
     label?: {
       color?: string;
       position?: 'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center',

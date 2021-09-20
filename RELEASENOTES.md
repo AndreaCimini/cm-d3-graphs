@@ -31,3 +31,10 @@
 | -------- | ---- | ---- | ---- |
 | Migration to D3 7 | **17-09-2021** | NEW | |
 
+## [0.0.6]
+
+| Activity | Date | Type | Notes |
+| -------- | ---- | ---- | ---- |
+| Flow chart link shape | **20-09-2021** | IMPROVEMENT | Added link shape option
+| Flow chart cluster shape | **20-09-2021** | IMPROVEMENT | Added cluster shape option|
+

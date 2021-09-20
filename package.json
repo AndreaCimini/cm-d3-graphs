@@ -1,6 +1,6 @@
 {
   "name": "cm-d3-graphs-app",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Andrea Cimini",
   "repository": {
     "type": "git",
@@ -53,7 +53,7 @@
     "dagre": "^0.8.5",
     "jsoneditor": "^9.1.8",
     "rxjs": "~6.5.5",
-    "tslib": "^2.0.0",
+    "tslib": "^2.3.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

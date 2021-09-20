@@ -183,7 +183,8 @@ export class D3UtilityService {
     defaultConfigurations.links = {
       color: 'lightsteelblue',
       arrow: true,
-      arrowDirection: 'end'
+      arrowDirection: 'end',
+      shape: 'straight'
     };
     defaultConfigurations.label = {
       color: 'black',
@@ -193,6 +194,7 @@ export class D3UtilityService {
       strokeColor: 'lightsteelblue',
       fillColor: 'transparent',
       position: 'default',
+      shape: 'rectangle',
       label: {
         color: 'lightsteelblue',
         position: 'center',

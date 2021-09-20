@@ -109,7 +109,7 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
 
   private fullSpaceClusterAdjustment() {
     // order cluster by level
-    const clusterByLevel= this.clustersArranged.sort((a: FlowChartGraphDataInterface, b: FlowChartGraphDataInterface) => {
+    const clusterByLevel = this.clustersArranged.sort((a: FlowChartGraphDataInterface, b: FlowChartGraphDataInterface) => {
       if (a.cluster.level < b.cluster.level) {
         return -1;
       }
@@ -350,11 +350,18 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
   }
 
   private diagonal(d) {
-    let path = 'M';
-    for (const point of d.data.points) {
-      path += point.x + ' ' + point.y + ',';
+    if (this.graphConfigs.links.shape === 'straight') {
+      let path = 'M ';
+      for (const point of d.data.points) {
+        path += point.x + ' ' + point.y + ',';
+      }
+      return path;
     }
-    return path;
+    return d3.line()
+      .x(p => p['x']) // tslint:disable-line
+      .y(p => p['y']) // tslint:disable-line
+      .curve(d3.curveBasis)
+      (d.data.points);
   }
 
   private manageLinks(g) {
@@ -380,16 +387,26 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
       .insert('g', '.node')
       .attr('id', d => d.id)
       .attr('class', 'cluster')
-      .attr('transform', d => 'translate(' + (d.x - d.width / 2) + ',' + (d.y - d.height / 2) + ')');
-    // append rect
-    cluster
-      .append('rect')
-      .attr('width', d => d.width)
-      .attr('height', d => d.height)
-      .attr('rx', 4)
-      .attr('ry', 4)
+      .attr('transform', d => 'translate(' +
+        (this.graphConfigs.clusters.shape === 'rectangle' ? (d.x - d.width / 2) : d.x) + ',' +
+        (this.graphConfigs.clusters.shape === 'rectangle' ? (d.y - d.height / 2) : d.y) + ')');
+    // append rect or ellipse
+    const shape = cluster
+      .append(this.graphConfigs.clusters.shape === 'rectangle' ? 'rect' : 'ellipse')
       .style('fill', d => d.cluster.fillColor)
       .style('stroke', d => d.cluster.strokeColor);
+
+    if (this.graphConfigs.clusters.shape === 'rectangle') {
+      shape
+        .attr('width', d => d.width)
+        .attr('height', d => d.height)
+        .attr('rx', 4)
+        .attr('ry', 4);
+    } else {
+      shape
+        .attr('rx', d => d.width / 2)
+        .attr('ry', d => d.height / 2);
+    }
     // append text
     cluster
       .append('text')
@@ -418,24 +435,28 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
       .style('font-size', this.graphConfigs.clusters.label['font-size'])
       .attr('x', d => {
         if (d.cluster.label.position === 'center' || d.cluster.label.position === 'top' || d.cluster.label.position === 'bottom') {
-          return d.width / 2;
+          return this.graphConfigs.clusters.shape === 'rectangle' ? d.width / 2 : 0;
         } else if (d.cluster.label.position === 'left' || d.cluster.label.position === 'top-left' ||
           d.cluster.label.position === 'bottom-left') {
-          return this.graphConfigs.clusters.label.padding.left;
+          return this.graphConfigs.clusters.shape === 'rectangle' ? this.graphConfigs.clusters.label.padding.left :
+            (this.graphConfigs.clusters.label.padding.left - d.width / 2);
         } else if (d.cluster.label.position === 'right' || d.cluster.label.position === 'top-right' ||
           d.cluster.label.position === 'bottom-right') {
-          return d.width - this.graphConfigs.clusters.label.padding.right;
+          return (this.graphConfigs.clusters.shape === 'rectangle' ? d.width : d.width / 2) -
+            this.graphConfigs.clusters.label.padding.right;
         }
       })
       .attr('y', d => {
         if (d.cluster.label.position === 'center' || d.cluster.label.position === 'left' || d.cluster.label.position === 'right') {
-          return d.height / 2;
+          return this.graphConfigs.clusters.shape === 'rectangle' ? d.height / 2 : 0;
         } else if (d.cluster.label.position === 'bottom' || d.cluster.label.position === 'bottom-left' ||
           d.cluster.label.position === 'bottom-right') {
-          return d.height - this.graphConfigs.clusters.label.padding.bottom;
+          return (this.graphConfigs.clusters.shape === 'rectangle' ? d.height : d.height / 2) -
+            this.graphConfigs.clusters.label.padding.bottom;
         } else if (d.cluster.label.position === 'top' || d.cluster.label.position === 'top-left' ||
           d.cluster.label.position === 'top-right') {
-          return this.graphConfigs.clusters.label.padding.top;
+          return this.graphConfigs.clusters.shape === 'rectangle' ? this.graphConfigs.clusters.label.padding.top :
+            (this.graphConfigs.clusters.label.padding.top - d.height / 2);
         }
       })
       .attr('fill', d => d.cluster.label.color)
