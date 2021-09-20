@@ -81,7 +81,7 @@ export class D3UtilityService {
     defaultConfigurations.legend = {
       enabled: false,
       position: 'right'
-    }
+    };
   }
 
   private static getDefaultConfigurationForPieAndDonut(defaultConfigurations: PieGraphConfigurationInterface) {
@@ -95,7 +95,7 @@ export class D3UtilityService {
     defaultConfigurations.legend = {
       enabled: false,
       position: 'right'
-    }
+    };
   }
 
   private static getDefaultConfigurationForLine(defaultConfigurations: LineGraphConfigurationInterface, data: LineGraphDataInterface[]) {
@@ -128,7 +128,7 @@ export class D3UtilityService {
     defaultConfigurations.legend = {
       enabled: false,
       position: 'right'
-    }
+    };
   }
 
   private static getDefaultConfigurationForTree(defaultConfigurations: TreeGraphConfigurationInterface) {
