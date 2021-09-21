@@ -44,3 +44,9 @@
 | -------- | ---- | ---- | ---- |
 | Flow chart link width | **20-09-2021** | IMPROVEMENT | Added link width option
 | Tree chart link width | **20-09-2021** | IMPROVEMENT | Added link width option
+
+## [0.0.8]
+
+| Activity | Date | Type | Notes |
+| -------- | ---- | ---- | ---- |
+| Flow chart initialization error | **21-09-2021** | BUG FIX | Fix error when data is initially empty

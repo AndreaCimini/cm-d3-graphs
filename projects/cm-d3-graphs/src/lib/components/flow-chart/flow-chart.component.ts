@@ -90,16 +90,27 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
       // init variables
       this.initVariables();
       if (this.graphDataArranged && this.graphDataArranged.length > 0) {
-        const g = d3.select(this.flowChart.nativeElement).select('#main-g');
-        // create tree
-        this.createFlowChart(g);
+        if (changes.nodes.previousValue.length === 0 && changes.edges.previousValue.length === 0 &&
+          changes.clusters.previousValue.length === 0) {
+          // get container dimension
+          const graphContainer = this.flowChart.nativeElement;
+          const width = graphContainer.clientWidth;
+          const height = graphContainer.clientHeight;
+          // create graph
+          this.createGraph(width, height);
+        } else {
+          const g = d3.select(this.flowChart.nativeElement).select('#main-g');
+          // create tree
+          this.createFlowChart(g);
+        }
+        /*
         if (this.graphConfigs.zoom) {
           // add zoom
           this.zoomListener = this.addZoom(g, this.flowChart, this.graphConfigs);
         } else {
           // scale to fit container
           this.fitGraph(this.flowChart, this.graphConfigs, 0);
-        }
+        }*/
       } else {
         // empty graph container
         d3.select(this.flowChart.nativeElement).select('#main-g').selectAll('*').remove();
