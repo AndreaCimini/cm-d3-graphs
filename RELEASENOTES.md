@@ -64,3 +64,9 @@
 | Activity | Date | Type | Notes |
 | -------- | ---- | ---- | ---- |
 | Node label under link | **22-09-2021** | BUG FIX | |
+
+## [0.0.11]
+
+| Activity | Date | Type | Notes |
+| -------- | ---- | ---- | ---- |
+| Cluster over link | **22-09-2021** | BUG FIX | |

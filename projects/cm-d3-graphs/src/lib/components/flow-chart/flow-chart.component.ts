@@ -477,10 +477,6 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
   private createFlowChart(g) {
     // create dagre graph
     this.createDagreGraph();
-    // compute links
-    this.manageLinks(g);
-    // compute nodes
-    this.manageNodes(g);
     // add clusters
     if (this.clustersArranged) {
       this.addClusters(g);
@@ -488,6 +484,10 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
       // remove old clusters
       g.selectAll('.cluster').remove();
     }
+    // compute links
+    this.manageLinks(g);
+    // compute nodes
+    this.manageNodes(g);
     // add zoom
     if (this.graphConfigs.zoom) {
       this.zoomListener = this.addZoom(g, this.flowChart, this.graphConfigs);
