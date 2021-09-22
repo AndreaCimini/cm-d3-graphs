@@ -273,7 +273,11 @@ export class D3UtilityService {
       collapsedColor: config.nodes.collapsedColor,
       expandedColor: config.nodes.expandedColor,
       strokeColor: config.nodes.strokeColor,
-      labelColor: config.label.color
+      labelColor: config.label.color,
+      circleRadius: config.nodes.circleRadius,
+      rectangleDimensions: config.nodes.rectangleDimensions,
+      squareDimensions: config.nodes.squareDimensions,
+      rhombusDimensions: config.nodes.rhombusDimensions
     }, inputData.node ? inputData.node : {});
     newData.link = D3UtilityService.merge({
       color: 'lightsteelblue',
@@ -288,7 +292,11 @@ export class D3UtilityService {
       expandedColor: config.nodes.expandedColor,
       strokeColor: config.nodes.strokeColor,
       labelColor: config.label.color,
-      icon: config.nodes.icon
+      icon: config.nodes.icon,
+      circleRadius: config.nodes.circleRadius,
+      rectangleDimensions: config.nodes.rectangleDimensions,
+      squareDimensions: config.nodes.squareDimensions,
+      rhombusDimensions: config.nodes.rhombusDimensions
     }, inputData.node ? inputData.node : {});
     newData.link = D3UtilityService.merge({
       color: 'lightsteelblue',

@@ -1886,7 +1886,11 @@ An **object** that defines the appearance of the single node.
     collapsedColor: string,
     expandedColor: string,
     strokeColor: string,
-    labelColor: string
+    labelColor: string,
+    circleRadius: number,
+    rectangleDimensions: { width: number, height: number },
+    squareDimensions: number,
+    rhombusDimensions: number
 }
 ```
 
@@ -1895,6 +1899,10 @@ An **object** that defines the appearance of the single node.
 * **expandedColor**: defines the color of the node when it is expanded.
 * **strokeColor**: defines the color of the border of the node.
 * **labelColor**: defines the color of the node label.
+* **circleRadius**: defines the radius of the node if shape is **circle**.
+* **rectangleDimensions**: defines the dimensions of the node if shape is **rect**.
+* **squareDimensions**: defines the dimensions of the node if shape is **square**.
+* **rhombusDimensions**: defines the dimensions of the node if shape is **rhombus**.
 
 If not provided, will be used the values set in the configuration.
 
@@ -2347,7 +2355,11 @@ An **object** that defines the appearance of the single node.
     expandedColor: string,
     strokeColor: string,
     labelColor: string,
-    icon: string
+    icon: string,
+    circleRadius: number,
+    rectangleDimensions: { width: number, height: number },
+    squareDimensions: number,
+    rhombusDimensions: number
 }
 ```
 
@@ -2357,6 +2369,10 @@ An **object** that defines the appearance of the single node.
 * **strokeColor**: defines the color of the border of the node.
 * **labelColor**: defines the color of the node label.
 * **icon**: sets the icon for single node.
+* **circleRadius**: defines the radius of the node if shape is **circle**.
+* **rectangleDimensions**: defines the dimensions of the node if shape is **rect**.
+* **squareDimensions**: defines the dimensions of the node if shape is **square**.
+* **rhombusDimensions**: defines the dimensions of the node if shape is **rhombus**.
 
 If not provided, will be used the values set in the configuration.
 

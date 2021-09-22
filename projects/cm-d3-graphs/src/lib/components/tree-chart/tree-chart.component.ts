@@ -101,22 +101,22 @@ export class TreeChartComponent extends BaseNodesCharts implements OnInit, OnCha
       this.graphConfigs.label.padding.top + this.graphConfigs.label.padding.bottom);
     if (data.node.shape === 'circle') {
       // no label correction because it is outside the node
-      nodeHeight = this.graphConfigs.nodes.circleRadius * 2;
-      nodeWidth = this.graphConfigs.nodes.circleRadius * 2;
+      nodeHeight = data.node.circleRadius * 2;
+      nodeWidth = data.node.circleRadius * 2;
     } else if (data.node.shape === 'rect') {
       // label correction
-      nodeHeight = this.graphConfigs.nodes.rectangleDimensions.height +
+      nodeHeight = data.node.rectangleDimensions.height +
         this.graphConfigs.label.padding.top + this.graphConfigs.label.padding.bottom;
-      nodeWidth = this.graphConfigs.nodes.rectangleDimensions.width +
+      nodeWidth = data.node.rectangleDimensions.width +
         this.graphConfigs.label.padding.left + this.graphConfigs.label.padding.right;
     } else if (data.node.shape === 'square') {
       // label correction
-      nodeHeight = this.graphConfigs.nodes.squareDimensions + labelPadding;
-      nodeWidth = this.graphConfigs.nodes.squareDimensions + labelPadding;
+      nodeHeight = data.node.squareDimensions + labelPadding;
+      nodeWidth = data.node.squareDimensions + labelPadding;
     } else if (data.node.shape === 'rhombus') {
       // label correction
-      nodeHeight = (this.graphConfigs.nodes.rhombusDimensions * Math.sqrt(2)) + labelPadding;
-      nodeWidth = (this.graphConfigs.nodes.rhombusDimensions * Math.sqrt(2)) + labelPadding;
+      nodeHeight = (data.node.rhombusDimensions * Math.sqrt(2)) + labelPadding;
+      nodeWidth = (data.node.rhombusDimensions * Math.sqrt(2)) + labelPadding;
     }
     let maxSize = {
       width: Math.max(currentMaxSize.width, nodeWidth),

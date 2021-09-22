@@ -33,6 +33,10 @@ export interface TreeGraphDataInterface extends BaseGraphDataInterface {
     expandedColor?: string;
     strokeColor?: string;
     labelColor?: string;
+    circleRadius?: number;
+    rectangleDimensions?: { width: number, height: number };
+    squareDimensions?: number;
+    rhombusDimensions?: number;
   };
   link?: {
     color?: string;
@@ -48,6 +52,10 @@ export interface FlowChartGraphDataInterface extends BaseGraphDataInterface {
     strokeColor?: string;
     labelColor?: string;
     icon?: string;
+    circleRadius?: number;
+    rectangleDimensions?: { width: number, height: number };
+    squareDimensions?: number;
+    rhombusDimensions?: number;
   };
   link?: {
     color?: string;

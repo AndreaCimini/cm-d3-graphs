@@ -4,7 +4,8 @@ export const FlowChartData = {
       id: 'a',
       label: 'Node1',
       node: {
-        shape: 'square'
+        shape: 'square',
+        squareDimensions: 200
       }
     },
     {

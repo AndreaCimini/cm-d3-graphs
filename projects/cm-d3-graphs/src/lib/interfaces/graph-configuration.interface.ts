@@ -110,7 +110,7 @@ export interface TreeGraphConfigurationInterface extends BaseGraphConfigurationI
     expandedColor?: string;
     strokeColor?: string;
     circleRadius?: number;
-    rectangleDimensions?: { width: number, height: number },
+    rectangleDimensions?: { width: number, height: number };
     squareDimensions?: number;
     rhombusDimensions?: number;
     distanceBetweenBrothers?: number;
@@ -148,7 +148,7 @@ export interface FlowChartGraphConfigurationInterface extends BaseGraphConfigura
     expandedColor?: string;
     strokeColor?: string;
     circleRadius?: number;
-    rectangleDimensions?: { width: number, height: number },
+    rectangleDimensions?: { width: number, height: number };
     squareDimensions?: number;
     rhombusDimensions?: number;
     distanceBetweenBrothers?: number;

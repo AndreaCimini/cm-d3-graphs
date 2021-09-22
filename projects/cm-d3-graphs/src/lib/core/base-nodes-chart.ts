@@ -52,11 +52,11 @@ export abstract class BaseNodesCharts extends BaseCharts {
         elements.nodes().forEach((el, index: number) => {
           let width = 0;
           if ((data[index].data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rect') {
-            width = graphConfigs.nodes.rectangleDimensions.width;
+            width = (data[index].data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.rectangleDimensions.width;
           } else if ((data[index].data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'square') {
-            width = graphConfigs.nodes.squareDimensions;
+            width = (data[index].data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.squareDimensions;
           } else if ((data[index].data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rhombus') {
-            width = graphConfigs.nodes.rhombusDimensions * Math.sqrt(2);
+            width = (data[index].data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.rhombusDimensions * Math.sqrt(2);
           } else if ((data[index].data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'circle') {
             width = undefined; // for circle label has no constraint
           }
@@ -76,25 +76,25 @@ export abstract class BaseNodesCharts extends BaseCharts {
         // if the node is a circle, the label is under the node and so is not necessary to do any adjustment
         // for square and rhombus shapes label padding is the same in all dimensions
         if ((nodeData.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rect') {
-          nodeData.width = (dimensions.width > graphConfigs.nodes.rectangleDimensions.width ?
-            dimensions.width : graphConfigs.nodes.rectangleDimensions.width) +
+          nodeData.width = (dimensions.width > nodeData.data.node.rectangleDimensions.width ?
+            dimensions.width : nodeData.data.node.rectangleDimensions.width) +
             graphConfigs.label.padding.left + graphConfigs.label.padding.right;
-          nodeData.height = (dimensions.height > graphConfigs.nodes.rectangleDimensions.height ?
-            dimensions.height : graphConfigs.nodes.rectangleDimensions.height) +
+          nodeData.height = (dimensions.height > nodeData.data.node.rectangleDimensions.height ?
+            dimensions.height : nodeData.data.node.rectangleDimensions.height) +
             graphConfigs.label.padding.top + graphConfigs.label.padding.bottom;
         } else if ((nodeData.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'square') {
-          nodeData.width = (dimensions.width > graphConfigs.nodes.squareDimensions ?
-            dimensions.width : graphConfigs.nodes.squareDimensions) + labelPadding;
-          nodeData.height = (dimensions.height > graphConfigs.nodes.squareDimensions ?
-            dimensions.height : graphConfigs.nodes.squareDimensions) + labelPadding;
+          nodeData.width = (dimensions.width > nodeData.data.node.squareDimensions ?
+            dimensions.width : nodeData.data.node.squareDimensions) + labelPadding;
+          nodeData.height = (dimensions.height > nodeData.data.node.squareDimensions ?
+            dimensions.height : nodeData.data.node.squareDimensions) + labelPadding;
         } else if ((nodeData.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rhombus') {
-          nodeData.width = (dimensions.width > (graphConfigs.nodes.rhombusDimensions * Math.sqrt(2)) ?
-            dimensions.width : (graphConfigs.nodes.rhombusDimensions * Math.sqrt(2))) + labelPadding;
-          nodeData.height = (dimensions.height > (graphConfigs.nodes.rhombusDimensions * Math.sqrt(2)) ?
-            dimensions.height : (graphConfigs.nodes.rhombusDimensions * Math.sqrt(2))) + labelPadding;
+          nodeData.width = (dimensions.width > (nodeData.data.node.rhombusDimensions * Math.sqrt(2)) ?
+            dimensions.width : (nodeData.data.node.rhombusDimensions * Math.sqrt(2))) + labelPadding;
+          nodeData.height = (dimensions.height > (nodeData.data.node.rhombusDimensions * Math.sqrt(2)) ?
+            dimensions.height : (nodeData.data.node.rhombusDimensions * Math.sqrt(2))) + labelPadding;
         } else if ((nodeData.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'circle') {
-          nodeData.width = 2 * graphConfigs.nodes.circleRadius;
-          nodeData.height = 2 * graphConfigs.nodes.circleRadius;
+          nodeData.width = 2 * nodeData.data.node.circleRadius;
+          nodeData.height = 2 * nodeData.data.node.circleRadius;
         }
       }
     }
@@ -102,7 +102,7 @@ export abstract class BaseNodesCharts extends BaseCharts {
     // set node dimensions
     // manage circle shape
     nodesShape.filter(d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'circle')
-      .attr('r', graphConfigs.nodes.circleRadius);
+      .attr('r', d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.circleRadius);
 
     // adds image to the node
     nodesEnter
@@ -110,10 +110,10 @@ export abstract class BaseNodesCharts extends BaseCharts {
         (d.data as FlowChartGraphDataInterface).node.icon)
       .append('svg:image')
       .attr('xlink:href',  d => d.data.node.icon)
-      .attr('x', - graphConfigs.nodes.circleRadius / 2)
-      .attr('y', - graphConfigs.nodes.circleRadius / 2)
-      .attr('height', graphConfigs.nodes.circleRadius)
-      .attr('width', graphConfigs.nodes.circleRadius);
+      .attr('x', d => - (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.circleRadius / 2)
+      .attr('y', d => - (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.circleRadius / 2)
+      .attr('height', d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.circleRadius)
+      .attr('width', d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.circleRadius);
 
     // manage other shapes
     nodesShape.filter(d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rect' ||
@@ -166,7 +166,7 @@ export abstract class BaseNodesCharts extends BaseCharts {
         // get dimensions
         const textDimensions = (textEl as SVGSVGElement).getBBox();
         if ((d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'circle') {
-          return 'translate(0,' + graphConfigs.nodes.circleRadius + ')';
+          return 'translate(0,' + (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.circleRadius + ')';
         } else if ((d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rect' ||
           (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'square') {
           // calc y translate quantity (the text is below the upper edge of the rectangle and middle anchored to the left upper edge)

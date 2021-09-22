@@ -70,3 +70,10 @@
 | Activity | Date | Type | Notes |
 | -------- | ---- | ---- | ---- |
 | Cluster over link | **22-09-2021** | BUG FIX | |
+
+## [0.0.12]
+
+| Activity | Date | Type | Notes |
+| -------- | ---- | ---- | ---- |
+| Flow chart node dimension | **22-09-2021** | IMPROVEMENT | Added dimension option for single node |
+| Tree chart node dimension | **22-09-2021** | IMPROVEMENT | Added dimension option for single node |

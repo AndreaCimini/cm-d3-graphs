@@ -259,22 +259,22 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
         this.graphConfigs.label.padding.top + this.graphConfigs.label.padding.bottom);
       if (d.node.shape === 'circle') {
         // no label correction because it is outside the node
-        nodeHeight = this.graphConfigs.nodes.circleRadius * 2;
-        nodeWidth = this.graphConfigs.nodes.circleRadius * 2;
+        nodeHeight = d.node.circleRadius * 2;
+        nodeWidth = d.node.circleRadius * 2;
       } else if (d.node.shape === 'rect') {
         // label correction
-        nodeHeight = this.graphConfigs.nodes.rectangleDimensions.height +
+        nodeHeight = d.node.rectangleDimensions.height +
           this.graphConfigs.label.padding.top + this.graphConfigs.label.padding.bottom;
-        nodeWidth = this.graphConfigs.nodes.rectangleDimensions.width +
+        nodeWidth = d.node.rectangleDimensions.width +
           this.graphConfigs.label.padding.left + this.graphConfigs.label.padding.right;
       } else if (d.node.shape === 'square') {
         // label correction
-        nodeHeight = this.graphConfigs.nodes.squareDimensions + labelPadding;
-        nodeWidth = this.graphConfigs.nodes.squareDimensions + labelPadding;
+        nodeHeight = d.node.squareDimensions + labelPadding;
+        nodeWidth = d.node.squareDimensions + labelPadding;
       } else if (d.node.shape === 'rhombus') {
         // label correction
-        nodeHeight = (this.graphConfigs.nodes.rhombusDimensions * Math.sqrt(2)) + labelPadding;
-        nodeWidth = (this.graphConfigs.nodes.rhombusDimensions * Math.sqrt(2)) + labelPadding;
+        nodeHeight = (d.node.rhombusDimensions * Math.sqrt(2)) + labelPadding;
+        nodeWidth = (d.node.rhombusDimensions * Math.sqrt(2)) + labelPadding;
       }
       graph.setNode(d.id, {label: d.label, width: nodeWidth, height: nodeHeight});
     }
