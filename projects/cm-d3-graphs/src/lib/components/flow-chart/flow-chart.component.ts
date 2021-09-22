@@ -477,10 +477,10 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
   private createFlowChart(g) {
     // create dagre graph
     this.createDagreGraph();
-    // compute nodes
-    this.manageNodes(g);
     // compute links
     this.manageLinks(g);
+    // compute nodes
+    this.manageNodes(g);
     // add clusters
     if (this.clustersArranged) {
       this.addClusters(g);

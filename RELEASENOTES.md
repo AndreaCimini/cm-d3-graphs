@@ -35,26 +35,32 @@
 
 | Activity | Date | Type | Notes |
 | -------- | ---- | ---- | ---- |
-| Flow chart link shape | **20-09-2021** | IMPROVEMENT | Added link shape option
-| Flow chart cluster shape | **20-09-2021** | IMPROVEMENT | Added cluster shape option|
+| Flow chart link shape | **20-09-2021** | IMPROVEMENT | Added link shape option |
+| Flow chart cluster shape | **20-09-2021** | IMPROVEMENT | Added cluster shape option |
 
 ## [0.0.7]
 
 | Activity | Date | Type | Notes |
 | -------- | ---- | ---- | ---- |
-| Flow chart link width | **20-09-2021** | IMPROVEMENT | Added link width option
-| Tree chart link width | **20-09-2021** | IMPROVEMENT | Added link width option
+| Flow chart link width | **20-09-2021** | IMPROVEMENT | Added link width option |
+| Tree chart link width | **20-09-2021** | IMPROVEMENT | Added link width option |
 
 ## [0.0.8]
 
 | Activity | Date | Type | Notes |
 | -------- | ---- | ---- | ---- |
-| Flow chart initialization error | **21-09-2021** | BUG FIX | Fix error when data is initially empty
+| Flow chart initialization error | **21-09-2021** | BUG FIX | Fix error when data is initially empty |
 
 ## [0.0.9]
 
 | Activity | Date | Type | Notes |
 | -------- | ---- | ---- | ---- |
-| Flow chart label font size | **22-09-2021** | IMPROVEMENT |  Added label font size option
-| Tree chart label font size | **22-09-2021** | IMPROVEMENT |  Added label font size option
-| Bubble chart label font size | **22-09-2021** | IMPROVEMENT |  Added label font size option
+| Flow chart label font size | **22-09-2021** | IMPROVEMENT | Added label font size option |
+| Tree chart label font size | **22-09-2021** | IMPROVEMENT | Added label font size option |
+| Bubble chart label font size | **22-09-2021** | IMPROVEMENT | Added label font size option |
+
+## [0.0.10]
+
+| Activity | Date | Type | Notes |
+| -------- | ---- | ---- | ---- |
+| Node label under link | **22-09-2021** | BUG FIX | |
