@@ -127,7 +127,8 @@ export interface TreeGraphConfigurationInterface extends BaseGraphConfigurationI
   };
   label?: {
     color?: string;
-    padding?: {top?: number, left?: number, right?: number, bottom?: number}
+    padding?: {top?: number, left?: number, right?: number, bottom?: number};
+    'font-size'?: string;
   };
 }
 
@@ -166,7 +167,8 @@ export interface FlowChartGraphConfigurationInterface extends BaseGraphConfigura
   };
   label?: {
     color?: string;
-    padding?: {top?: number, left?: number, right?: number, bottom?: number}
+    padding?: {top?: number, left?: number, right?: number, bottom?: number};
+    'font-size'?: string;
   };
   clusters?: {
     position?: 'default' | 'full-space';
@@ -218,7 +220,7 @@ export interface RangeSliderGraphConfigurationInterface extends BaseGraphConfigu
     fillColor?: string;
     type?: 'single' | 'double';
     showTooltip?: 'never' | 'always' | 'on-hover'
-  }
+  };
 }
 
 export interface BubbleChartGraphConfigurationInterface extends BaseGraphConfigurationInterface {
@@ -235,15 +237,16 @@ export interface BubbleChartGraphConfigurationInterface extends BaseGraphConfigu
   };
   label?: {
     color?: string;
+    'font-size'?: string;
   };
 }
 
 // TYPES
 
-export type NodeGraphInterface = TreeGraphConfigurationInterface | FlowChartGraphConfigurationInterface
+export type NodeGraphInterface = TreeGraphConfigurationInterface | FlowChartGraphConfigurationInterface;
 
 export type AxesGraphInterface = HistogramGraphConfigurationInterface | LineGraphConfigurationInterface |
-  RangeSliderGraphConfigurationInterface
+  RangeSliderGraphConfigurationInterface;
 
 export type GraphConfigurationInterface = AxesGraphInterface | PieGraphConfigurationInterface | NodeGraphInterface |
-  BubbleChartGraphConfigurationInterface
+  BubbleChartGraphConfigurationInterface;

@@ -28,7 +28,7 @@ export abstract class BaseNodesCharts extends BaseCharts {
         } else if (((d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'circle')) {
           shape = 'circle';
         }
-        return document.createElementNS(d3.namespaces.svg, shape)
+        return document.createElementNS(d3.namespaces.svg, shape);
       })
       .attr('class', 'node-shape')
       .style('fill', d => (d._children ?
@@ -43,6 +43,7 @@ export abstract class BaseNodesCharts extends BaseCharts {
       .attr('y', 0)
       .style('text-anchor', 'middle')
       .style('dominant-baseline', 'text-before-edge')
+      .style('font-size', graphConfigs.label['font-size'])
       .attr('fill', d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.labelColor)
       .text(d => d.data.label)
       .call(elements => {
@@ -59,7 +60,7 @@ export abstract class BaseNodesCharts extends BaseCharts {
           } else if ((data[index].data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'circle') {
             width = undefined; // for circle label has no constraint
           }
-          this.wrapLongText(el, width)
+          this.wrapLongText(el, width);
         });
       });
 
@@ -112,7 +113,7 @@ export abstract class BaseNodesCharts extends BaseCharts {
       .attr('x', - graphConfigs.nodes.circleRadius / 2)
       .attr('y', - graphConfigs.nodes.circleRadius / 2)
       .attr('height', graphConfigs.nodes.circleRadius)
-      .attr('width', graphConfigs.nodes.circleRadius)
+      .attr('width', graphConfigs.nodes.circleRadius);
 
     // manage other shapes
     nodesShape.filter(d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rect' ||
@@ -132,7 +133,7 @@ export abstract class BaseNodesCharts extends BaseCharts {
       .attr('x', d => d.width / 4)
       .attr('y', d => d.height / 4 - (d.data.label ? 15 : 0))
       .attr('height', d => d.width / 2)
-      .attr('width', d => d.height / 2)
+      .attr('width', d => d.height / 2);
 
     // manage rhombus shape
     nodesShape.filter(d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.shape === 'rhombus')
@@ -151,7 +152,7 @@ export abstract class BaseNodesCharts extends BaseCharts {
       .attr('x', d => - d.width / 4)
       .attr('y', d => d.height / 4 - (d.data.label ? 15 : 0))
       .attr('height', d => d.width / 2)
-      .attr('width', d => d.height / 2)
+      .attr('width', d => d.height / 2);
 
     return {nodes, nodesEnter};
   }

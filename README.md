@@ -1828,12 +1828,14 @@ An **object** that defines the appearance of the label.
 ```javascript
 {
     color: string,
-    padding: {top: number, left: number, right: number, bottom: number}
+    padding: {top: number, left: number, right: number, bottom: number},
+    'font-size': number
 }
 ```
 
 * **color**: defines the color of the labels.
 * **padding**: defines the padding of the labels.
+* **font-size**: defines the font size of the labels.
 
 If not provided, default value will be used.
 
@@ -2240,12 +2242,14 @@ An **object** that defines the appearance of the label.
 ```javascript
 {
     color: string,
-    padding: {top: number, left: number, right: number, bottom: number}
+    padding: {top: number, left: number, right: number, bottom: number},
+    'font-size': number
 }
 ```
 
 * **color**: defines the color of the labels.
 * **padding**: defines the padding of the labels.
+* **font-size**: defines the font size of the labels.
 
 If not provided, default value will be used.
 
@@ -2746,11 +2750,13 @@ An **object** that defines the appearance of the label.
 
 ```javascript
 {
-    color: string
+    color: string,
+    'font-size': number
 }
 ```
 
 * **color**: defines the color of the labels.
+* **font-size**: defines the font size of the labels.
 
 If not provided, default value will be used.
 

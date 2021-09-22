@@ -50,3 +50,11 @@
 | Activity | Date | Type | Notes |
 | -------- | ---- | ---- | ---- |
 | Flow chart initialization error | **21-09-2021** | BUG FIX | Fix error when data is initially empty
+
+## [0.0.9]
+
+| Activity | Date | Type | Notes |
+| -------- | ---- | ---- | ---- |
+| Flow chart label font size | **22-09-2021** | IMPROVEMENT |  Added label font size option
+| Tree chart label font size | **22-09-2021** | IMPROVEMENT |  Added label font size option
+| Bubble chart label font size | **22-09-2021** | IMPROVEMENT |  Added label font size option
