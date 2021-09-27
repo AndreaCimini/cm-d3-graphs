@@ -15,7 +15,8 @@ export abstract class BaseNodesCharts extends BaseCharts {
     // Append g for each node
     const nodesEnter = nodes.enter().append('g')
       .attr('id', d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).id)
-      .attr('class', 'node');
+      .attr('class', d => 'node' + ((d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.additionalClasses ?
+        ' ' + (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.additionalClasses : ''));
 
     // Add shape for the nodes
     const nodesShape = nodesEnter
@@ -35,7 +36,8 @@ export abstract class BaseNodesCharts extends BaseCharts {
         (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.collapsedColor :
         (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.expandedColor))
       .style('opacity', 1)
-      .style('stroke', d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.strokeColor);
+      .style('stroke', d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.strokeColor)
+      .style('stroke-width', d => (d.data as TreeGraphDataInterface | FlowChartGraphDataInterface).node.strokeWidth);
 
     // adds the text to the node
     nodesEnter.append('text')

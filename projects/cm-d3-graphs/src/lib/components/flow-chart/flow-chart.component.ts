@@ -3,12 +3,15 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  Input, OnChanges,
+  Input,
+  OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  Renderer2, SimpleChanges,
-  ViewChild
+  Renderer2,
+  SimpleChanges,
+  ViewChild,
+  ViewEncapsulation
 } from '@angular/core';
 import * as d3 from 'd3';
 import * as dagre from 'dagre';
@@ -22,7 +25,8 @@ import {BaseNodesCharts} from '../../core/base-nodes-chart';
   selector: 'cm-flow-chart',
   templateUrl: './flow-chart.component.html',
   styleUrls: ['./flow-chart.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnChanges, OnDestroy {
 
@@ -90,8 +94,8 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
       // init variables
       this.initVariables();
       if (this.graphDataArranged && this.graphDataArranged.length > 0) {
-        if (changes.nodes.previousValue.length === 0 && changes.edges.previousValue.length === 0 &&
-          changes.clusters.previousValue.length === 0) {
+        if (changes.nodes && changes.nodes.previousValue.length === 0 && changes.edges && changes.edges.previousValue.length === 0 &&
+          changes.clusters && changes.clusters.previousValue.length === 0) {
           // get container dimension
           const graphContainer = this.flowChart.nativeElement;
           const width = graphContainer.clientWidth;

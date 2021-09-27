@@ -77,3 +77,12 @@
 | -------- | ---- | ---- | ---- |
 | Flow chart node dimension | **22-09-2021** | IMPROVEMENT | Added dimension option for single node |
 | Tree chart node dimension | **22-09-2021** | IMPROVEMENT | Added dimension option for single node |
+
+## [0.0.13]
+
+| Activity | Date | Type | Notes |
+| -------- | ---- | ---- | ---- |
+| Flow chart node class | **27-09-2021** | IMPROVEMENT | Added class option for single node |
+| Flow chart node stroke width | **27-09-2021** | IMPROVEMENT | Added stroke width option for single node |
+| Tree chart node class | **27-09-2021** | IMPROVEMENT | Added class option for single node |
+| Tree chart node stroke width | **27-09-2021** | IMPROVEMENT | Added stroke width option for single node |

@@ -1746,6 +1746,7 @@ An **object** that defines the appearance of the nodes.
     collapsedColor: string,
     expandedColor: string,
     strokeColor: string,
+    strokeWidth: string,
     circleRadius: number,
     rectangleDimensions: { width: number, height: number },
     squareDimensions: number,
@@ -1754,7 +1755,8 @@ An **object** that defines the appearance of the nodes.
     distanceBetweenCousins: number,
     distanceBetweenParentAndChild: number,
     expandable: boolean,
-    maxInitialExpandedLevel: number
+    maxInitialExpandedLevel: number,
+    additionalClasses: string
 }
 ```
 
@@ -1762,6 +1764,7 @@ An **object** that defines the appearance of the nodes.
 * **collapsedColor**: defines the color of the node when it is collapsed.
 * **expandedColor**: defines the color of the node when it is expanded.
 * **strokeColor**: defines the color of the border of the node.
+* **strokeWidth**: defines the width of the border of the node.
 * **circleRadius**: defines the radius of the node if shape is **circle**.
 * **rectangleDimensions**: defines the dimensions of the node if shape is **rect**.
 * **squareDimensions**: defines the dimensions of the node if shape is **square**.
@@ -1771,6 +1774,7 @@ An **object** that defines the appearance of the nodes.
 * **distanceBetweenParentAndChild**: defines the distance between parent and its children.
 * **expandable**: sets if nodes with children can be collapsed and expanded.
 * **maxInitialExpandedLevel**: if **expandable** is true, defines the last level visible.
+* **additionalClasses**: list of additional classes associated to nodes (example "class1 class2 ...").
 
 If not provided, default value will be used.
 
@@ -1886,11 +1890,13 @@ An **object** that defines the appearance of the single node.
     collapsedColor: string,
     expandedColor: string,
     strokeColor: string,
+    strokeWidth: string,
     labelColor: string,
     circleRadius: number,
     rectangleDimensions: { width: number, height: number },
     squareDimensions: number,
-    rhombusDimensions: number
+    rhombusDimensions: number,
+    additionalClasses: string
 }
 ```
 
@@ -1898,11 +1904,13 @@ An **object** that defines the appearance of the single node.
 * **collapsedColor**: defines the color of the node when it is collapsed.
 * **expandedColor**: defines the color of the node when it is expanded.
 * **strokeColor**: defines the color of the border of the node.
+* **strokeWidth**: defines the width of the border of the node.
 * **labelColor**: defines the color of the node label.
 * **circleRadius**: defines the radius of the node if shape is **circle**.
 * **rectangleDimensions**: defines the dimensions of the node if shape is **rect**.
 * **squareDimensions**: defines the dimensions of the node if shape is **square**.
 * **rhombusDimensions**: defines the dimensions of the node if shape is **rhombus**.
+* **additionalClasses**: list of additional classes associated to single node (example "class1 class2 ...").
 
 If not provided, will be used the values set in the configuration.
 
@@ -2165,6 +2173,7 @@ An **object** that defines the appearance of the nodes.
     collapsedColor: string,
     expandedColor: string,
     strokeColor: string,
+    strokeWidth: string,
     circleRadius: number,
     rectangleDimensions: { width: number, height: number },
     squareDimensions: number,
@@ -2174,7 +2183,8 @@ An **object** that defines the appearance of the nodes.
     distanceBetweenParentAndChild: number,
     expandable: boolean,
     maxInitialExpandedLevel: number,
-    icon: string
+    icon: string,
+    additionalClasses: string
 }
 ```
 
@@ -2182,6 +2192,7 @@ An **object** that defines the appearance of the nodes.
 * **collapsedColor**: defines the color of the node when it is collapsed.
 * **expandedColor**: defines the color of the node when it is expanded.
 * **strokeColor**: defines the color of the border of the node.
+* **strokeWidth**: defines the width of the border of the node.
 * **circleRadius**: defines the radius of the node if shape is **circle**.
 * **rectangleDimensions**: defines the dimensions of the node if shape is **rect**.
 * **squareDimensions**: defines the dimensions of the node if shape is **square**.
@@ -2191,7 +2202,8 @@ An **object** that defines the appearance of the nodes.
 * **distanceBetweenParentAndChild**: defines the distance between parent and its children.
 * **expandable**: sets if nodes with children can be collapsed and expanded.
 * **maxInitialExpandedLevel**: if **expandable** is true, defines the last level visible.
-* **icon**: sets the icon for all nodes.. It can be overwritten by single data (see section below).
+* **icon**: sets the icon for all nodes. It can be overwritten by single data (see section below).
+* **additionalClasses**: list of additional classes associated to nodes (example "class1 class2 ...").
 
 If not provided, default value will be used.
 
@@ -2354,12 +2366,14 @@ An **object** that defines the appearance of the single node.
     collapsedColor: string,
     expandedColor: string,
     strokeColor: string,
+    strokeWidth: string,
     labelColor: string,
     icon: string,
     circleRadius: number,
     rectangleDimensions: { width: number, height: number },
     squareDimensions: number,
-    rhombusDimensions: number
+    rhombusDimensions: number,
+    additionalClasses: string
 }
 ```
 
@@ -2367,12 +2381,14 @@ An **object** that defines the appearance of the single node.
 * **collapsedColor**: defines the color of the node when it is collapsed.
 * **expandedColor**: defines the color of the node when it is expanded.
 * **strokeColor**: defines the color of the border of the node.
+* **strokeWidth**: defines the width of the border of the node.
 * **labelColor**: defines the color of the node label.
 * **icon**: sets the icon for single node.
 * **circleRadius**: defines the radius of the node if shape is **circle**.
 * **rectangleDimensions**: defines the dimensions of the node if shape is **rect**.
 * **squareDimensions**: defines the dimensions of the node if shape is **square**.
 * **rhombusDimensions**: defines the dimensions of the node if shape is **rhombus**.
+* **additionalClasses**: list of additional classes associated to node (example "class1 class2 ...").
 
 If not provided, will be used the values set in the configuration.
 

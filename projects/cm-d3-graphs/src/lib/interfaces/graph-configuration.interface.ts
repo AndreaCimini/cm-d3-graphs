@@ -109,6 +109,7 @@ export interface TreeGraphConfigurationInterface extends BaseGraphConfigurationI
     collapsedColor?: string;
     expandedColor?: string;
     strokeColor?: string;
+    strokeWidth?: string;
     circleRadius?: number;
     rectangleDimensions?: { width: number, height: number };
     squareDimensions?: number;
@@ -118,6 +119,7 @@ export interface TreeGraphConfigurationInterface extends BaseGraphConfigurationI
     distanceBetweenParentAndChild?: number;
     expandable?: boolean;
     maxInitialExpandedLevel?: number;
+    additionalClasses?: string;
   };
   links?: {
     color?: string;
@@ -147,6 +149,7 @@ export interface FlowChartGraphConfigurationInterface extends BaseGraphConfigura
     collapsedColor?: string;
     expandedColor?: string;
     strokeColor?: string;
+    strokeWidth?: string;
     circleRadius?: number;
     rectangleDimensions?: { width: number, height: number };
     squareDimensions?: number;
@@ -157,6 +160,7 @@ export interface FlowChartGraphConfigurationInterface extends BaseGraphConfigura
     expandable?: boolean;
     maxInitialExpandedLevel?: number;
     icon?: string;
+    additionalClasses?: string;
   };
   links?: {
     color?: string;
