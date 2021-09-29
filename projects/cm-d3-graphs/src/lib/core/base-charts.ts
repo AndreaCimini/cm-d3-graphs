@@ -201,48 +201,49 @@ export abstract class BaseCharts {
   }
 
   protected wrapLongText(textElement, width: number) {
-    if (width) {
-      // loop get text element
-      const textNode = d3.select(textElement);
-      // get text
-      const text = textNode.text();
-      // split text by space and get words
-      const words = text.split(/\s+/).reverse();
-      let word;
-      let line = [];
-      let lineNumber = 0;
-      const lineHeight = 1.1; // ems
-      // get text node properties
-      const y = textNode.attr('y');
-      const dy = parseFloat(textNode.attr('dy'));
-      // create a tspan (tspan is for line element)
-      let tspan = textNode.text(null).append('tspan')
-        .attr('x', 0)
-        .attr('y', y)
-        .attr('dy', dy + 'em');
-      // loop over words
-      while (words.length > 0) {
-        // get current word
-        word = words.pop();
-        // push word in current line
-        line.push(word);
-        // set tspan text joining whit space the words in current line
-        tspan.text(line.join(' '));
-        // check if current line width is grater than the input width
-        if (tspan.node().getComputedTextLength() > width) {
-          // remove last word
-          line.pop();
-          // set again tspan text
-          tspan.text(line.join(' '));
-          // init new line
-          line = [word];
-          // add new span
-          tspan = textNode.append('tspan')
-            .attr('x', 0)
-            .attr('y', y)
-            .attr('dy', `${++lineNumber * lineHeight + dy}em`)
-            .text(word);
+    // loop get text element
+    const textNode = d3.select(textElement);
+    // get text
+    const text = textNode.text();
+    // split text by space and get words
+    const words = text.split(/\s+/).reverse();
+    let word;
+    let line = [];
+    let lineNumber = 0;
+    const lineHeight = 1.1; // ems
+    // get text node properties
+    const y = textNode.attr('y');
+    const dy = parseFloat(textNode.attr('dy'));
+    // create a tspan (tspan is for line element)
+    let tspan = textNode.text(null).append('tspan')
+      .attr('x', 0)
+      .attr('y', y)
+      .attr('dy', dy + 'em');
+    // loop over words
+    while (words.length > 0) {
+      // get current word
+      word = words.pop();
+      // push word in current line
+      line.push(word);
+      // set tspan text joining whit space the words in current line
+      tspan.text(line.join(' '));
+      // check if current line width is grater than the input width
+      if ((width && tspan.node().getComputedTextLength() > width) || word.startsWith('%nl%')) {
+        if (word.startsWith('%nl%')) {
+          word = word.replace('%nl%', '');
         }
+        // remove last word
+        line.pop();
+        // set again tspan text
+        tspan.text(line.join(' '));
+        // init new line
+        line = [word];
+        // add new span
+        tspan = textNode.append('tspan')
+          .attr('x', 0)
+          .attr('y', y)
+          .attr('dy', `${++lineNumber * lineHeight + dy}em`)
+          .text(word);
       }
     }
   }

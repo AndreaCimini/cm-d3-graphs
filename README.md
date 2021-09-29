@@ -1873,7 +1873,8 @@ If not provided, an **auto-calculated** value will be used.
 
 ###### label
 
-A **string** that defines the label of the data. It is **required**.
+A **string** that defines the label of the data. It is **required**.\
+If label contains special character **%nl%**, it will be splitted on multiple lines (for example "hi %nl%my name is Andrea", results in "hi" and "my name is Andrea" on two different lines).
 
 ###### extraData
 
@@ -2349,7 +2350,8 @@ A **string** that defines the id of the data. It is **required**.
 
 ###### label (configuration for node and cluster)
 
-A **string** that defines the label of the data. It is **required**.
+A **string** that defines the label of the data. It is **required**.\
+If label contains special character **%nl%**, it will be splitted on multiple lines (for example "hi %nl%my name is Andrea", results in "hi" and "my name is Andrea" on two different lines).
 
 ###### extraData (configuration for node)
 

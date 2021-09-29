@@ -92,3 +92,5 @@
 | Activity | Date | Type | Notes |
 | -------- | ---- | ---- | ---- |
 | Flow chart link anchor | **29-09-2021** | BUG FIX | Fixed link anchor for those nodes with circle shape |
+| Flow chart node label multiple line | **29-09-2021** | IMPROVEMENT | Split label on multiple line |
+| Tree chart node label multiple line | **29-09-2021** | IMPROVEMENT | Split label on multiple line |
