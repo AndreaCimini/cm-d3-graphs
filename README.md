@@ -1774,7 +1774,7 @@ An **object** that defines the appearance of the nodes.
 * **distanceBetweenParentAndChild**: defines the distance between parent and its children.
 * **expandable**: sets if nodes with children can be collapsed and expanded.
 * **maxInitialExpandedLevel**: if **expandable** is true, defines the last level visible.
-* **additionalClasses**: list of additional classes associated to nodes (example "class1 class2 ...").
+* **additionalClasses**: list of additional classes associated to nodes (example "class1 class2 ..."). It's important to put ::ng-deep before class definition.
 
 If not provided, default value will be used.
 
@@ -1910,7 +1910,7 @@ An **object** that defines the appearance of the single node.
 * **rectangleDimensions**: defines the dimensions of the node if shape is **rect**.
 * **squareDimensions**: defines the dimensions of the node if shape is **square**.
 * **rhombusDimensions**: defines the dimensions of the node if shape is **rhombus**.
-* **additionalClasses**: list of additional classes associated to single node (example "class1 class2 ...").
+* **additionalClasses**: list of additional classes associated to single node (example "class1 class2 ..."). It's important to put ::ng-deep before class definition.
 
 If not provided, will be used the values set in the configuration.
 
@@ -2203,7 +2203,7 @@ An **object** that defines the appearance of the nodes.
 * **expandable**: sets if nodes with children can be collapsed and expanded.
 * **maxInitialExpandedLevel**: if **expandable** is true, defines the last level visible.
 * **icon**: sets the icon for all nodes. It can be overwritten by single data (see section below).
-* **additionalClasses**: list of additional classes associated to nodes (example "class1 class2 ...").
+* **additionalClasses**: list of additional classes associated to nodes (example "class1 class2 ..."). It's important to put ::ng-deep before class definition.
 
 If not provided, default value will be used.
 
@@ -2388,7 +2388,7 @@ An **object** that defines the appearance of the single node.
 * **rectangleDimensions**: defines the dimensions of the node if shape is **rect**.
 * **squareDimensions**: defines the dimensions of the node if shape is **square**.
 * **rhombusDimensions**: defines the dimensions of the node if shape is **rhombus**.
-* **additionalClasses**: list of additional classes associated to node (example "class1 class2 ...").
+* **additionalClasses**: list of additional classes associated to node (example "class1 class2 ..."). It's important to put ::ng-deep before class definition.
 
 If not provided, will be used the values set in the configuration.
 

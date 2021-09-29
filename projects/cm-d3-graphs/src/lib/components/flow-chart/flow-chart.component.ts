@@ -10,8 +10,7 @@ import {
   Output,
   Renderer2,
   SimpleChanges,
-  ViewChild,
-  ViewEncapsulation
+  ViewChild
 } from '@angular/core';
 import * as d3 from 'd3';
 import * as dagre from 'dagre';
@@ -25,8 +24,7 @@ import {BaseNodesCharts} from '../../core/base-nodes-chart';
   selector: 'cm-flow-chart',
   templateUrl: './flow-chart.component.html',
   styleUrls: ['./flow-chart.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnChanges, OnDestroy {
 
@@ -263,6 +261,7 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
         this.graphConfigs.label.padding.top + this.graphConfigs.label.padding.bottom);
       if (d.node.shape === 'circle') {
         // no label correction because it is outside the node
+        // in this case, we consider the square inscribed in the circle
         nodeHeight = d.node.circleRadius * 2;
         nodeWidth = d.node.circleRadius * 2;
       } else if (d.node.shape === 'rect') {
@@ -320,7 +319,31 @@ export class FlowChartComponent extends BaseNodesCharts implements OnInit, OnCha
       ...n, x: graph.node(n.id).x, y: graph.node(n.id).y, width: graph.node(n.id).width,
       height: graph.node(n.id).height
     }));
-    this.edgesArranged = this.edgesArranged.map(e => ({...e, points: graph.edge({v: e.source, w: e.target}).points}));
+    this.edgesArranged = this.edgesArranged.map(e => {
+      const edge = {...e, points: graph.edge({v: e.source, w: e.target}).points};
+      // fix start and/or end point if start and/or end node is a circle
+      const startNode = this.nodesArranged.find(n => n.id === edge.source);
+      const endNode = this.nodesArranged.find(n => n.id === edge.target);
+      // only links that are not aligned with node center, need correction
+      if (startNode.node.shape === 'circle' && startNode['x'] !== edge.points[0].x && startNode['y'] !== edge.points[0].y) { // tslint:disable-line
+        const distanceFromPointToCenter = Math.sqrt(Math.pow(edge.points[0].x - startNode['x'], 2) + // tslint:disable-line
+          Math.pow(edge.points[0].y - startNode['y'], 2)); // tslint:disable-line
+        const sinOfAngleWithHorizontalLine = (edge.points[0].y - startNode['y']) / distanceFromPointToCenter; // tslint:disable-line
+        const cosOfAngleWithHorizontalLine = (edge.points[0].x - startNode['x']) / distanceFromPointToCenter; // tslint:disable-line
+        edge.points[0].x = startNode.node.circleRadius * cosOfAngleWithHorizontalLine + startNode['x']; // tslint:disable-line
+        edge.points[0].y = startNode.node.circleRadius * sinOfAngleWithHorizontalLine + startNode['y']; // tslint:disable-line
+      }
+      if (endNode.node.shape === 'circle' && endNode['x'] !== edge.points[edge.points.length - 1].x && // tslint:disable-line
+        endNode['y'] !== edge.points[edge.points.length - 1].y) { // tslint:disable-line
+        const distanceFromPointToCenter = Math.sqrt(Math.pow(endNode['x'] - edge.points[edge.points.length - 1].x, 2) + // tslint:disable-line
+          Math.pow(endNode['y'] - edge.points[edge.points.length - 1].y, 2)); // tslint:disable-line
+        const sinOfAngleWithHorizontalLine = (endNode['y'] - edge.points[edge.points.length - 1].y) / distanceFromPointToCenter; // tslint:disable-line
+        const cosOfAngleWithHorizontalLine = (endNode['x'] - edge.points[edge.points.length - 1].x) / distanceFromPointToCenter; // tslint:disable-line
+        edge.points[edge.points.length - 1].x = endNode['x'] - endNode.node.circleRadius * cosOfAngleWithHorizontalLine; // tslint:disable-line
+        edge.points[edge.points.length - 1].y = endNode['y'] - endNode.node.circleRadius * sinOfAngleWithHorizontalLine; // tslint:disable-line
+      }
+      return edge;
+    });
     // enrich clusters with position and dimension
     if (this.clustersArranged) {
       this.clustersArranged = this.clustersArranged.map(c => ({

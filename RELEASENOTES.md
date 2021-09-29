@@ -86,3 +86,9 @@
 | Flow chart node stroke width | **27-09-2021** | IMPROVEMENT | Added stroke width option for single node |
 | Tree chart node class | **27-09-2021** | IMPROVEMENT | Added class option for single node |
 | Tree chart node stroke width | **27-09-2021** | IMPROVEMENT | Added stroke width option for single node |
+
+## [0.0.14]
+
+| Activity | Date | Type | Notes |
+| -------- | ---- | ---- | ---- |
+| Flow chart link anchor | **29-09-2021** | BUG FIX | Fixed link anchor for those nodes with circle shape |
