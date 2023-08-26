@@ -1,0 +1,1 @@
+export type GraphTypes = 'histogram' | 'line' | 'pie' | 'donut' | 'tree' | 'flow' | 'range' | 'bubble';

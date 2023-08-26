@@ -1,0 +1,5 @@
+.eslintrc.js
+definitions/*
+**/generated/**
+jest.config.js
+webpack.config.js
